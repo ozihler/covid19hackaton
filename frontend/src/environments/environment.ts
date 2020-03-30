@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  eventName: "covid19hackaton-dev",
   production: false,
   baseUrl: `${location.origin}/api`.replace('4200', '5000')
 };
