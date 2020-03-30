@@ -1,0 +1,17 @@
+- can an exercise exist in multiple muscle groups?
+- Sort MuscleGroups/Exercises
+- Only store exercises with at least one muscle group permanently
+- only strike though deleted items, confirm deletion required
+- delete Workout (make unselectable)
+- exercise/muscleGroup should use MuscleGroupName instead of Name
+- use creation methods or new consistently
+- select set to copy values
+- assure no duplicate exercises/muscle groups
+- Group Exercises By Muscle Group
+- Provide Set values of last time exercise was used as input default values
+- Implement Authentication with Auth0 > add simple steps first and build up from there
+- TRANSACTIONAL
+- Add SQL repo for exercises
+- Use Postgresql for prod (& test), use H2 for dev
+- Fix unselectable -> Filtering!!
+- improve make unselectable (musclegroup, exercise): goal: only the database knows what unselectable means (remove isSelectable from Exercise/MuscleGroup entities)

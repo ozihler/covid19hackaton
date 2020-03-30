@@ -1,0 +1,32 @@
+package com.zihler.fitness_tracker.domain.values;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
+
+public class Names {
+    private List<Name> names;
+
+    private Names(List<Name> names) {
+        this.names = names;
+    }
+
+    public static Names in(String namesString) {
+        String[] names = namesString.split("[;,.]+");
+
+        return new Names(Arrays.stream(names)
+                .map(String::trim)
+                .map(Name::of)
+                .collect(toList()));
+    }
+
+    public static Names of(List<Name> names) {
+        return new Names(names);
+    }
+
+    public List<Name> values() {
+        return names;
+    }
+
+}
