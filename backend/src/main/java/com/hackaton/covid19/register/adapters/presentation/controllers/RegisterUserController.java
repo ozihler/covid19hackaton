@@ -1,6 +1,6 @@
 package com.hackaton.covid19.register.adapters.presentation.controllers;
 
-import com.hackaton.covid19.register.adapters.presentation.presenters.RestCreatedUserOutput;
+import com.hackaton.covid19.register.adapters.presentation.presenters.RestCreatedUserPresenter;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UserJson;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
 import com.hackaton.covid19.register.application.use_cases.RegisterUserUseCase;
@@ -24,7 +24,7 @@ public class RegisterUserController {
 
     public ResponseEntity<UserJson> registerUserWith(UsernameJson requestUsername) {
         var username = Username.from(requestUsername.getUsername());
-        var output = new RestCreatedUserOutput();
+        var output = new RestCreatedUserPresenter();
 
         this.registerUser.invokeWith(username, output);
 

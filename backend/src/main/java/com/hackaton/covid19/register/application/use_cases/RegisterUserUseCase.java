@@ -1,9 +1,8 @@
 package com.hackaton.covid19.register.application.use_cases;
 
-import com.hackaton.covid19.register.adapters.presentation.presenters.RestCreatedUserOutput;
 import com.hackaton.covid19.register.application.documents.UserDocument;
 import com.hackaton.covid19.register.application.exceptions.UserAlreadyRegisteredException;
-import com.hackaton.covid19.register.application.outbound_ports.CreatedUserOutput;
+import com.hackaton.covid19.register.application.outbound_ports.CreatedUserPresenter;
 import com.hackaton.covid19.register.application.use_cases.inbound_port.RegisterUser;
 import com.hackaton.covid19.register.domain.entities.User;
 import com.hackaton.covid19.register.domain.values.Username;
@@ -21,7 +20,7 @@ public class RegisterUserUseCase implements RegisterUser {
     }
 
     @Override
-    public void invokeWith(Username username, CreatedUserOutput output) {
+    public void invokeWith(Username username, CreatedUserPresenter output) {
         if (fetchUser.exists(username)) {
             throw new UserAlreadyRegisteredException(username.value());
         }

@@ -2,11 +2,11 @@ package com.hackaton.covid19.register.adapters.presentation.presenters;
 
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UserJson;
 import com.hackaton.covid19.register.application.documents.UserDocument;
-import com.hackaton.covid19.register.application.outbound_ports.CreatedUserOutput;
+import com.hackaton.covid19.register.application.outbound_ports.CreatedUserPresenter;
 import com.hackaton.covid19.register.domain.values.Username;
 import org.springframework.http.ResponseEntity;
 
-public class RestCreatedUserOutput implements CreatedUserOutput {
+public class RestCreatedUserPresenter implements CreatedUserPresenter {
 
     private ResponseEntity<UserJson> response;
 
