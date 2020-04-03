@@ -48,5 +48,5 @@ dependencies {
     testCompile 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
     testCompile("org.assertj:assertj-core:3.11.1")
 
-    implementation(project(':frontend'))
+   // implementation(project(':frontend'))
 }

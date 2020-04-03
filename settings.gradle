@@ -1,2 +1,3 @@
 rootProject.name = 'covid19hackaton'
-include 'frontend', 'backend'
+include 'backend'
+//'frontend',
