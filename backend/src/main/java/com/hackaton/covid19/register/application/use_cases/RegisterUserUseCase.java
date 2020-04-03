@@ -1,6 +1,6 @@
 package com.hackaton.covid19.register.application.use_cases;
 
-import com.hackaton.covid19.register.application.documents.UserDocument;
+import com.hackaton.covid19.register.application.outbound_ports.UserDocument;
 import com.hackaton.covid19.register.application.exceptions.UserAlreadyRegisteredException;
 import com.hackaton.covid19.register.application.outbound_ports.CreatedUserPresenter;
 import com.hackaton.covid19.register.application.use_cases.inbound_port.RegisterUser;

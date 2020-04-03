@@ -1,4 +1,4 @@
-package com.hackaton.covid19.register.application.documents;
+package com.hackaton.covid19.register.application.outbound_ports;
 
 import com.hackaton.covid19.register.domain.values.Username;
 
