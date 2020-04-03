@@ -6,6 +6,10 @@ public class UsernameJson {
     public UsernameJson() {
     }
 
+    public UsernameJson(String username) {
+        this.username = username;
+    }
+
     public String getUsername() {
         return username;
     }

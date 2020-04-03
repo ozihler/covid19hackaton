@@ -7,7 +7,7 @@ public class UserDocument {
     private Username username;
 
     public UserDocument(Username username) {
-        username = username;
+        this.username = username;
     }
 
     public Username getUsername() {

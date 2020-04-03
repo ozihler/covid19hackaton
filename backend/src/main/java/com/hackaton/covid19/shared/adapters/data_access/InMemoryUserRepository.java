@@ -37,4 +37,8 @@ public class InMemoryUserRepository implements FetchUser, StoreUser {
         this.users.put(user.getUsername(), user);
         return user;
     }
+
+    public int count() {
+        return users.size();
+    }
 }

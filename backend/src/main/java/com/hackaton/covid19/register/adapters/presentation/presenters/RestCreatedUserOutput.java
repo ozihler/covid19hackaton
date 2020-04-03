@@ -2,9 +2,11 @@ package com.hackaton.covid19.register.adapters.presentation.presenters;
 
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UserJson;
 import com.hackaton.covid19.register.application.documents.UserDocument;
+import com.hackaton.covid19.register.application.outbound_ports.CreatedUserOutput;
+import com.hackaton.covid19.register.domain.values.Username;
 import org.springframework.http.ResponseEntity;
 
-public class CreatedUserOutput {
+public class RestCreatedUserOutput implements CreatedUserOutput {
 
     private ResponseEntity<UserJson> response;
 
@@ -12,7 +14,11 @@ public class CreatedUserOutput {
         return response;
     }
 
+    @Override
     public void present(UserDocument userDocument) {
-        response = ResponseEntity.ok(new UserJson(userDocument.getUsername().value()));
+        Username username = userDocument.getUsername();
+        String value = username.value();
+        UserJson userJson = new UserJson(value);
+        response = ResponseEntity.ok(userJson);
     }
 }
