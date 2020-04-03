@@ -4,7 +4,7 @@ import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-index',
-  template: `Welcome to the {{welcomeMessage}}!`
+  template: `{{welcomeMessage}}!`
 })
 export class IndexComponent implements OnInit {
   welcomeMessage: string;
