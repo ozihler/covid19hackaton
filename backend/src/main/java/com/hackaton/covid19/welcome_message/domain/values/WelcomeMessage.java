@@ -1,4 +1,4 @@
-package com.hackaton.covid19.domain.values;
+package com.hackaton.covid19.welcome_message.domain.values;
 
 public class WelcomeMessage {
     private EventName name;

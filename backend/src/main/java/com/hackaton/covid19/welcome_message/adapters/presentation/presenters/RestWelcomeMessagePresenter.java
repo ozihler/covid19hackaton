@@ -1,8 +1,8 @@
-package com.hackaton.covid19.adapters.presentation.presenters;
+package com.hackaton.covid19.welcome_message.adapters.presentation.presenters;
 
-import com.hackaton.covid19.adapters.presentation.presenters.viewmodels.WelcomeMessageViewModel;
-import com.hackaton.covid19.application.outbound_ports.presenters.WelcomeMessagePresenter;
-import com.hackaton.covid19.domain.values.WelcomeMessage;
+import com.hackaton.covid19.welcome_message.adapters.presentation.presenters.viewmodels.WelcomeMessageViewModel;
+import com.hackaton.covid19.welcome_message.application.outbound_ports.presenters.WelcomeMessagePresenter;
+import com.hackaton.covid19.welcome_message.domain.values.WelcomeMessage;
 import org.springframework.http.ResponseEntity;
 
 public class RestWelcomeMessagePresenter extends RestPresenter<WelcomeMessageViewModel> implements WelcomeMessagePresenter {

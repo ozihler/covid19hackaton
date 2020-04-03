@@ -1,4 +1,4 @@
-package com.hackaton.covid19.adapters.infrastructure;
+package com.hackaton.covid19.welcome_message.adapters.infrastructure;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

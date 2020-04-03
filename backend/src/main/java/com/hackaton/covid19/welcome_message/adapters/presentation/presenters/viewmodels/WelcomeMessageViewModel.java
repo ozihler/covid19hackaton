@@ -1,4 +1,4 @@
-package com.hackaton.covid19.adapters.presentation.presenters.viewmodels;
+package com.hackaton.covid19.welcome_message.adapters.presentation.presenters.viewmodels;
 
 public class WelcomeMessageViewModel {
     private String welcomeMessage;

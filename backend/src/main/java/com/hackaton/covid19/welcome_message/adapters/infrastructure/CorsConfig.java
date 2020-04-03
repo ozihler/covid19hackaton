@@ -1,4 +1,4 @@
-package com.hackaton.covid19.adapters.infrastructure;
+package com.hackaton.covid19.welcome_message.adapters.infrastructure;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

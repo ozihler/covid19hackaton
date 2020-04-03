@@ -1,7 +1,7 @@
-package com.hackaton.covid19.adapters.presentation.resources;
+package com.hackaton.covid19.welcome_message.adapters.presentation.resources;
 
-import com.hackaton.covid19.adapters.presentation.controllers.WelcomeMessageController;
-import com.hackaton.covid19.adapters.presentation.presenters.viewmodels.WelcomeMessageViewModel;
+import com.hackaton.covid19.welcome_message.adapters.presentation.controllers.WelcomeMessageController;
+import com.hackaton.covid19.welcome_message.adapters.presentation.presenters.viewmodels.WelcomeMessageViewModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

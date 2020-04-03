@@ -1,10 +1,10 @@
-package com.hackaton.covid19.adapters.presentation.controllers;
+package com.hackaton.covid19.welcome_message.adapters.presentation.controllers;
 
-import com.hackaton.covid19.adapters.presentation.presenters.RestWelcomeMessagePresenter;
-import com.hackaton.covid19.adapters.presentation.presenters.viewmodels.WelcomeMessageViewModel;
-import com.hackaton.covid19.application.use_cases.view_welcome_message.ViewWelcomeMessageUseCase;
-import com.hackaton.covid19.application.use_cases.view_welcome_message.inbound_port.ViewWelcomeMessage;
-import com.hackaton.covid19.domain.values.EventName;
+import com.hackaton.covid19.welcome_message.adapters.presentation.presenters.RestWelcomeMessagePresenter;
+import com.hackaton.covid19.welcome_message.adapters.presentation.presenters.viewmodels.WelcomeMessageViewModel;
+import com.hackaton.covid19.welcome_message.application.use_cases.view_welcome_message.ViewWelcomeMessageUseCase;
+import com.hackaton.covid19.welcome_message.application.use_cases.view_welcome_message.inbound_port.ViewWelcomeMessage;
+import com.hackaton.covid19.welcome_message.domain.values.EventName;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
