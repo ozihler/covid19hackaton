@@ -5,10 +5,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {AngularFontAwesomeModule} from "angular-font-awesome";
 import {CommonModule, DatePipe} from "@angular/common";
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import { IndexComponent } from './index/index.component';
+import {IndexComponent} from './index/index.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +19,7 @@ import { IndexComponent } from './index/index.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AngularFontAwesomeModule,
-    CommonModule,
-    FontAwesomeModule
+    CommonModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {WelcomeMessage} from "./welcome-message";
+import {Component, OnInit} from '@angular/core';
 import {WelcomeMessageService} from "./welcome-message.service";
 import {environment} from "../../environments/environment";
 
@@ -8,13 +7,14 @@ import {environment} from "../../environments/environment";
   template: `Welcome to the {{welcomeMessage}}!`
 })
 export class IndexComponent implements OnInit {
-  private welcomeMessage: string;
+  welcomeMessage: string;
 
-  constructor(private welcomeMessageService:WelcomeMessageService) { }
+  constructor(private welcomeMessageService: WelcomeMessageService) {
+  }
 
   ngOnInit() {
     this.welcomeMessageService.fetchWelcomeMessageFor(environment.eventName)
-      .subscribe(response=>{
+      .subscribe(response => {
         this.welcomeMessage = response.welcomeMessage;
       })
   }
