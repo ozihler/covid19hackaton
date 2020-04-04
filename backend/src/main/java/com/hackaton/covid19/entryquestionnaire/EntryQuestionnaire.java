@@ -6,27 +6,42 @@ import java.util.Objects;
 public class EntryQuestionnaire {
     private String gender;
     private String age;
-    private List<String> riskCategories;
-    private List<String> symptoms;
-    private boolean travelledAbroad;
-    private boolean livesWithPeopleInSameHousehold;
-    private boolean metInfectedPeople;
-    private int daysNotOut;
-    private List<String> preventiveMeasuresPerformed;
-
-    public EntryQuestionnaire(String gender, String age, List<String> riskCategories, List<String> symptoms, boolean travelledAbroad, boolean livesWithPeopleInSameHousehold, boolean metInfectedPeople, int daysNotOut, List<String> preventiveMeasuresPerformed) {
-        this.gender = gender;
-        this.age = age;
-        this.riskCategories = riskCategories;
-        this.symptoms = symptoms;
-        this.travelledAbroad = travelledAbroad;
-        this.livesWithPeopleInSameHousehold = livesWithPeopleInSameHousehold;
-        this.metInfectedPeople = metInfectedPeople;
-        this.daysNotOut = daysNotOut;
-        this.preventiveMeasuresPerformed = preventiveMeasuresPerformed;
-    }
+    private boolean belongsToRiskCategory;
+    private boolean hadSymptoms;
+    private int numberOfPeopleInHousehold;
+    private boolean livesWithPeopleOfRiskCategory;
+    private int numberOfPeopleMetInTheLast2Weeks;
+    private int daysSinceLastWentOut;
+    private List<String> regularPreventiveMeasures;
 
     public EntryQuestionnaire() {
+    }
+
+    public EntryQuestionnaire(String gender, String age, boolean belongsToRiskCategory, boolean hadSymptoms, int numberOfPeopleInHousehold, boolean livesWithPeopleOfRiskCategory, int numberOfPeopleMetInTheLast2Weeks, int daysSinceLastWentOut, List<String> regularPreventiveMeasures) {
+        this.gender = gender;
+        this.age = age;
+        this.belongsToRiskCategory = belongsToRiskCategory;
+        this.hadSymptoms = hadSymptoms;
+        this.numberOfPeopleInHousehold = numberOfPeopleInHousehold;
+        this.livesWithPeopleOfRiskCategory = livesWithPeopleOfRiskCategory;
+        this.numberOfPeopleMetInTheLast2Weeks = numberOfPeopleMetInTheLast2Weeks;
+        this.daysSinceLastWentOut = daysSinceLastWentOut;
+        this.regularPreventiveMeasures = regularPreventiveMeasures;
+    }
+
+    @Override
+    public String toString() {
+        return "EntryQuestionnaire{" +
+                "gender='" + gender + '\'' +
+                ", age='" + age + '\'' +
+                ", belongsToRiskCategory=" + belongsToRiskCategory +
+                ", hadSymptoms=" + hadSymptoms +
+                ", numberOfPeopleInHousehold=" + numberOfPeopleInHousehold +
+                ", livesWithPeopleOfRiskCategory=" + livesWithPeopleOfRiskCategory +
+                ", numberOfPeopleMetInTheLast2Weeks=" + numberOfPeopleMetInTheLast2Weeks +
+                ", daysSinceLastWentOut=" + daysSinceLastWentOut +
+                ", regularPreventiveMeasures=" + regularPreventiveMeasures +
+                '}';
     }
 
     public String getGender() {
@@ -45,95 +60,59 @@ public class EntryQuestionnaire {
         this.age = age;
     }
 
-    public List<String> getRiskCategories() {
-        return riskCategories;
+    public boolean isBelongsToRiskCategory() {
+        return belongsToRiskCategory;
     }
 
-    public void setRiskCategories(List<String> riskCategories) {
-        this.riskCategories = riskCategories;
+    public void setBelongsToRiskCategory(boolean belongsToRiskCategory) {
+        this.belongsToRiskCategory = belongsToRiskCategory;
     }
 
-    public List<String> getSymptoms() {
-        return symptoms;
+    public boolean isHadSymptoms() {
+        return hadSymptoms;
     }
 
-    public void setSymptoms(List<String> symptoms) {
-        this.symptoms = symptoms;
+    public void setHadSymptoms(boolean hadSymptoms) {
+        this.hadSymptoms = hadSymptoms;
     }
 
-    public boolean isTravelledAbroad() {
-        return travelledAbroad;
+    public int getNumberOfPeopleInHousehold() {
+        return numberOfPeopleInHousehold;
     }
 
-    public void setTravelledAbroad(boolean travelledAbroad) {
-        this.travelledAbroad = travelledAbroad;
+    public void setNumberOfPeopleInHousehold(int numberOfPeopleInHousehold) {
+        this.numberOfPeopleInHousehold = numberOfPeopleInHousehold;
     }
 
-    public boolean isLivesWithPeopleInSameHousehold() {
-        return livesWithPeopleInSameHousehold;
+    public boolean isLivesWithPeopleOfRiskCategory() {
+        return livesWithPeopleOfRiskCategory;
     }
 
-    public void setLivesWithPeopleInSameHousehold(boolean livesWithPeopleInSameHousehold) {
-        this.livesWithPeopleInSameHousehold = livesWithPeopleInSameHousehold;
+    public void setLivesWithPeopleOfRiskCategory(boolean livesWithPeopleOfRiskCategory) {
+        this.livesWithPeopleOfRiskCategory = livesWithPeopleOfRiskCategory;
     }
 
-    public boolean isMetInfectedPeople() {
-        return metInfectedPeople;
+    public int getNumberOfPeopleMetInTheLast2Weeks() {
+        return numberOfPeopleMetInTheLast2Weeks;
     }
 
-    public void setMetInfectedPeople(boolean metInfectedPeople) {
-        this.metInfectedPeople = metInfectedPeople;
+    public void setNumberOfPeopleMetInTheLast2Weeks(int numberOfPeopleMetInTheLast2Weeks) {
+        this.numberOfPeopleMetInTheLast2Weeks = numberOfPeopleMetInTheLast2Weeks;
     }
 
-    public int getDaysNotOut() {
-        return daysNotOut;
+    public int getDaysSinceLastWentOut() {
+        return daysSinceLastWentOut;
     }
 
-    public void setDaysNotOut(int daysNotOut) {
-        this.daysNotOut = daysNotOut;
+    public void setDaysSinceLastWentOut(int daysSinceLastWentOut) {
+        this.daysSinceLastWentOut = daysSinceLastWentOut;
     }
 
-    public List<String> getPreventiveMeasuresPerformed() {
-        return preventiveMeasuresPerformed;
+    public List<String> getRegularPreventiveMeasures() {
+        return regularPreventiveMeasures;
     }
 
-    public void setPreventiveMeasuresPerformed(List<String> preventiveMeasuresPerformed) {
-        this.preventiveMeasuresPerformed = preventiveMeasuresPerformed;
-    }
-
-    @Override
-    public String toString() {
-        return "EntryQuestionnaire{" +
-                "gender='" + gender + '\'' +
-                ", age='" + age + '\'' +
-                ", riskCategories=" + riskCategories +
-                ", symptoms=" + symptoms +
-                ", travelledAbroad=" + travelledAbroad +
-                ", livesWithPeopleInSameHousehold=" + livesWithPeopleInSameHousehold +
-                ", metInfectedPeople=" + metInfectedPeople +
-                ", daysNotOut=" + daysNotOut +
-                ", preventiveMeasuresPerformed=" + preventiveMeasuresPerformed +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EntryQuestionnaire that = (EntryQuestionnaire) o;
-        return travelledAbroad == that.travelledAbroad &&
-                livesWithPeopleInSameHousehold == that.livesWithPeopleInSameHousehold &&
-                metInfectedPeople == that.metInfectedPeople &&
-                daysNotOut == that.daysNotOut &&
-                Objects.equals(gender, that.gender) &&
-                Objects.equals(age, that.age) &&
-                Objects.equals(riskCategories, that.riskCategories) &&
-                Objects.equals(symptoms, that.symptoms) &&
-                Objects.equals(preventiveMeasuresPerformed, that.preventiveMeasuresPerformed);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(gender, age, riskCategories, symptoms, travelledAbroad, livesWithPeopleInSameHousehold, metInfectedPeople, daysNotOut, preventiveMeasuresPerformed);
+    public void setRegularPreventiveMeasures(List<String> regularPreventiveMeasures) {
+        this.regularPreventiveMeasures = regularPreventiveMeasures;
     }
 }

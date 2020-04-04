@@ -11,9 +11,11 @@ public class QuestionnaireResource {
     @GetMapping("/questionnaire")
     public Questionnaire getQuestionnaire() {
 
-        return new Questionnaire(List.of(
-                new Question("1", "What is your name", 10, "iconname")
-        ));
+        return new Questionnaire(
+                List.of(
+                        new Question("1", "What is your name", 10, "iconname")
+                )
+        );
     }
 
 }

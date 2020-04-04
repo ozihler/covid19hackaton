@@ -1,5 +1,8 @@
 package com.hackaton.covid19.entryquestionnaire;
 
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SubmitEntryQuestionnaireResource {
+    Logger logger = LoggerFactory.getLogger(SubmitEntryQuestionnaireResource.class);
 
     private EntryQuestionnaireService entryQuestionnaireService;
 
@@ -18,9 +22,10 @@ public class SubmitEntryQuestionnaireResource {
     }
 
     @PostMapping("entryQuestionnaire")
-    public ResponseEntity<EntryQuestionnaire> submitEntryQuestionnaire(@RequestHeader("pandeName") String pandeName, @RequestBody EntryQuestionnaire entryQuestionnaire) {
-        EntryQuestionnaire stored = this.entryQuestionnaireService.storeQuestionnaire(pandeName,entryQuestionnaire);
-        return ResponseEntity.ok(stored);
+    public ResponseEntity<ScoreJson> submitEntryQuestionnaire(@RequestHeader("pandeName") String pandeName, @RequestBody EntryQuestionnaire entryQuestionnaire) {
+        logger.info("Received " + entryQuestionnaire + " for user " + pandeName);
+        ScoreJson score = this.entryQuestionnaireService.storeQuestionnaire(pandeName, entryQuestionnaire);
+        return ResponseEntity.ok(score);
     }
 
 }
