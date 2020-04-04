@@ -1,9 +1,13 @@
 package com.hackaton.covid19.shared.domain.entities;
 
+import com.hackaton.covid19.dailyquestionnaire.DailyQuestionnaire;
 import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaire;
 import com.hackaton.covid19.shared.domain.values.PandeBuddies;
 import com.hackaton.covid19.shared.domain.values.Score;
 import com.hackaton.covid19.shared.domain.values.Username;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PandeBuddy {
 
@@ -12,16 +16,17 @@ public class PandeBuddy {
     private String imageUrl;
     private Score score = new Score();
     private EntryQuestionnaire entryQuestionnaire;
+    private List<DailyQuestionnaire> dailyQuestionnaires;
 
     public PandeBuddy(Username username, PandeBuddies pandeBuddies, String imageUrl, Score score) {
         this.username = username;
         this.pandeBuddies = pandeBuddies;
         this.imageUrl = imageUrl;
         this.score = score;
+        this.dailyQuestionnaires = new ArrayList<>();
     }
 
     public PandeBuddy() {
-
     }
 
     public void setUsername(Username username) {
@@ -63,5 +68,9 @@ public class PandeBuddy {
 
     public void setEntryQuestionnaire(EntryQuestionnaire entryQuestionnaire) {
         this.entryQuestionnaire = entryQuestionnaire;
+    }
+
+    public List<DailyQuestionnaire> getDailyQuestionnaires() {
+        return dailyQuestionnaires;
     }
 }
