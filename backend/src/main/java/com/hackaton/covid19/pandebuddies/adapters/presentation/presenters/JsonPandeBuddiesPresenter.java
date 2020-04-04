@@ -1,21 +1,24 @@
-package com.hackaton.covid19.showpandebuddies.adapters.presentation.presenters;
+package com.hackaton.covid19.pandebuddies.adapters.presentation.presenters;
 
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
 import com.hackaton.covid19.shared.application.outbound_ports.PandeBuddyDocument;
+import com.hackaton.covid19.shared.domain.entities.PandeBuddy;
 import com.hackaton.covid19.shared.domain.values.Username;
-import com.hackaton.covid19.showpandebuddies.adapters.presentation.viewmodels.PandeBuddiesJson;
-import com.hackaton.covid19.showpandebuddies.application.PandeBuddiesDocument;
-import com.hackaton.covid19.showpandebuddies.application.outbound_ports.ShowPandeBuddiesPresenter;
+import com.hackaton.covid19.pandebuddies.adapters.presentation.viewmodels.PandeBuddiesJson;
+import com.hackaton.covid19.pandebuddies.application.PandeBuddiesDocument;
+import com.hackaton.covid19.pandebuddies.application.outbound_ports.PandeBuddiesPresenter;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JsonShowPandeBuddiesPresenter implements ShowPandeBuddiesPresenter {
-    private ResponseEntity<PandeBuddiesJson> response;
+public class JsonPandeBuddiesPresenter implements PandeBuddiesPresenter {
+    private ResponseEntity<PandeBuddiesJson> responsePandeBuddies;
+    public ResponseEntity<PandeBuddiesJson> getResponsePandeBuddies() { return this.responsePandeBuddies; }
 
-    public ResponseEntity<PandeBuddiesJson> getResponse() {
-        return this.response;
+    private ResponseEntity<PandeBuddyJson> responsePandeBuddy;
+    public ResponseEntity<PandeBuddyJson> getResponsePandeBuddy() {
+        return this.responsePandeBuddy;
     }
 
     @Override
@@ -24,7 +27,13 @@ public class JsonShowPandeBuddiesPresenter implements ShowPandeBuddiesPresenter 
 
         PandeBuddiesJson body = new PandeBuddiesJson(pandeBuddies);
 
-        this.response = ResponseEntity.ok(body);
+        this.responsePandeBuddies = ResponseEntity.ok(body);
+    }
+
+    @Override
+    public void add(PandeBuddyDocument pandeBuddyDocument) {
+        PandeBuddyJson body = toPandeBuddyJson(pandeBuddyDocument);
+        this.responsePandeBuddy = ResponseEntity.ok(body);
     }
 
     private List<PandeBuddyJson> toJsons(PandeBuddiesDocument pandeBuddiesDocument) {

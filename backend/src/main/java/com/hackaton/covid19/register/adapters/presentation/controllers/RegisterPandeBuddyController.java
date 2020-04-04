@@ -2,7 +2,7 @@ package com.hackaton.covid19.register.adapters.presentation.controllers;
 
 import com.hackaton.covid19.register.adapters.presentation.presenters.RestCreatedUserPresenter;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
-import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
+import com.hackaton.covid19.shared.adapters.presentation.viewmodels.UsernameJson;
 import com.hackaton.covid19.register.application.use_cases.RegisterPandeBuddyUseCase;
 import com.hackaton.covid19.register.application.use_cases.inbound_port.RegisterPandeBuddy;
 import com.hackaton.covid19.shared.domain.values.Username;

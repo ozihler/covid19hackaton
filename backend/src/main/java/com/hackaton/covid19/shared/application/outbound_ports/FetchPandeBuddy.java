@@ -9,6 +9,6 @@ public interface FetchPandeBuddy {
     default boolean exists(Username username) {
         return withUsername(username).isPresent();
     }
-
     Optional<PandeBuddy> withUsername(Username username);
+    PandeBuddy addToPandeBuddies(Username newBuddyUsername, Username username);
 }

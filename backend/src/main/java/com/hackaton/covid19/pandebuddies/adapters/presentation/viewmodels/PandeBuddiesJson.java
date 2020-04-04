@@ -1,4 +1,4 @@
-package com.hackaton.covid19.showpandebuddies.adapters.presentation.viewmodels;
+package com.hackaton.covid19.pandebuddies.adapters.presentation.viewmodels;
 
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
 

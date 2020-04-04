@@ -1,12 +1,10 @@
-package com.hackaton.covid19.showpandebuddies.adapters.presentation.resources;
+package com.hackaton.covid19.pandebuddies.adapters.presentation.resources;
 
-import com.hackaton.covid19.showpandebuddies.adapters.presentation.controllers.ShowPandeBuddiesController;
-import com.hackaton.covid19.showpandebuddies.adapters.presentation.viewmodels.PandeBuddiesJson;
+import com.hackaton.covid19.pandebuddies.adapters.presentation.controllers.ShowPandeBuddiesController;
+import com.hackaton.covid19.pandebuddies.adapters.presentation.viewmodels.PandeBuddiesJson;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ShowPandeBuddiesResource {

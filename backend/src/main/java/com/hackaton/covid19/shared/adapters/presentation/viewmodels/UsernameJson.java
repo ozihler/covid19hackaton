@@ -1,4 +1,4 @@
-package com.hackaton.covid19.register.adapters.presentation.viewmodels;
+package com.hackaton.covid19.shared.adapters.presentation.viewmodels;
 
 public class UsernameJson {
     private String username;

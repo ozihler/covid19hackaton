@@ -1,4 +1,4 @@
-package com.hackaton.covid19.showpandebuddies.application;
+package com.hackaton.covid19.pandebuddies.application;
 
 import com.hackaton.covid19.shared.application.outbound_ports.PandeBuddyDocument;
 

@@ -3,7 +3,7 @@ package covid19.register.adapters.presentation.controllers;
 
 import com.hackaton.covid19.register.adapters.presentation.controllers.RegisterPandeBuddyController;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
-import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
+import com.hackaton.covid19.shared.adapters.presentation.viewmodels.UsernameJson;
 import com.hackaton.covid19.register.application.exceptions.UserAlreadyRegisteredException;
 import com.hackaton.covid19.shared.domain.values.Username;
 import com.hackaton.covid19.shared.adapters.data_access.InMemoryPandeBuddyRepository;

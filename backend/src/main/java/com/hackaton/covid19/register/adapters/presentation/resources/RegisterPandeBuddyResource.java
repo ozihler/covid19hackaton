@@ -2,7 +2,7 @@ package com.hackaton.covid19.register.adapters.presentation.resources;
 
 import com.hackaton.covid19.register.adapters.presentation.controllers.RegisterPandeBuddyController;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
-import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
+import com.hackaton.covid19.shared.adapters.presentation.viewmodels.UsernameJson;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

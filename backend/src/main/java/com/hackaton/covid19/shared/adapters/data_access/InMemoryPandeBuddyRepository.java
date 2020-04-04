@@ -74,7 +74,25 @@ public class InMemoryPandeBuddyRepository
         return pandeBuddy.getPandeBuddies();
     }
 
+
     public int count() {
         return pandeBuddies.size();
+    }
+
+    @Override
+    public PandeBuddy addToPandeBuddies(Username newBuddyUsername, Username username) {
+        if (!exists(username)) {
+            throw new PandeBuddyNotFoundException(username);
+        }
+        if (!exists(newBuddyUsername)) {
+            throw new PandeBuddyNotFoundException(newBuddyUsername);
+        }
+        PandeBuddy pandeBuddy = pandeBuddies.get(username);
+        PandeBuddy newAddedPandeBuddy = pandeBuddies.get(newBuddyUsername);
+        List<PandeBuddy> pandeBuddies = pandeBuddy.getPandeBuddies().getPandeBuddies();
+        if(!pandeBuddies.contains(newAddedPandeBuddy)){
+            pandeBuddies.add(newAddedPandeBuddy);
+        }
+        return newAddedPandeBuddy;
     }
 }
