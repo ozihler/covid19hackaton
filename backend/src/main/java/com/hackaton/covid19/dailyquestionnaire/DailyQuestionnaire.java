@@ -1,11 +1,14 @@
 package com.hackaton.covid19.dailyquestionnaire;
 
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public class DailyQuestionnaire {
 
+    private LocalDate date;
     private boolean symptoms;
     private List<String> preventiveMeasuresPerformed;
     private List<String> placesVisited;
@@ -15,6 +18,7 @@ public class DailyQuestionnaire {
 
 
     public DailyQuestionnaire(boolean symptoms, List<String> preventiveMeasuresPerformed, List<String> placesVisited, List<String> transportation, int peopleMet, List<String> metInfectedPeople) {
+        this.date = LocalDate.now();
         this.symptoms = symptoms;
         this.preventiveMeasuresPerformed = preventiveMeasuresPerformed;
         this.placesVisited = placesVisited;
@@ -24,6 +28,10 @@ public class DailyQuestionnaire {
     }
 
     public DailyQuestionnaire(){}
+
+    public LocalDate getDate() {
+        return date;
+    }
 
     public boolean isSymptoms() {
         return symptoms;

@@ -3,6 +3,9 @@ package com.hackaton.covid19.entryquestionnaire;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import org.apache.logging.log4j.util.Strings;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 public class EntryQuestionnaireScore {
     public static final int NO_MEET_EVER_IDENTIFICATION_NUMBER = -1;
     public static final int HIGH_RISK_AGE = 65;
@@ -23,9 +26,9 @@ public class EntryQuestionnaireScore {
             scoreJson.setValue(0);
             scoreJson.setColor(DANGER_COLOR);
             return scoreJson;
-        }else if(!shouldMeetBefore2WeeksPassed()) {
+        }else if(!shouldMeetBefore2WeeksPassed() && daysLeftToMeet()!=1) {
             ScoreJson scoreJson = new ScoreJson();
-            scoreJson.setDaysLeftToMeet(MAX_DAYS_LEFT_TO_MEET);
+            scoreJson.setDaysLeftToMeet(daysLeftToMeet());
             scoreJson.setNoMeet(true);
             scoreJson.setValue(0);
             scoreJson.setColor(DANGER_COLOR);
@@ -38,6 +41,16 @@ public class EntryQuestionnaireScore {
             scoreJson.setValue(calculateScore());
             return scoreJson;
         }
+    }
+
+    private int daysLeftToMeet(){
+        LocalDate now = LocalDate.now();
+        LocalDate then = entryQuestionnaire.getDate();
+        int daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
+        if(daysLeftToMeet > 1){
+            return daysLeftToMeet;
+        }
+        return 1;
     }
 
     private boolean shouldMeetEver() {

@@ -1,8 +1,10 @@
 package com.hackaton.covid19.entryquestionnaire;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class EntryQuestionnaire {
+    private LocalDate date;
     private String gender;
     private int age;
     private boolean belongsToRiskCategory;
@@ -19,6 +21,7 @@ public class EntryQuestionnaire {
     }
 
     public EntryQuestionnaire(String gender, int age, boolean belongsToRiskCategory, boolean hadSymptoms, boolean hasTraveledAbroad, int numberOfPeopleInHousehold, boolean livesWithPeopleOfRiskCategory, int numberOfPeopleMetInTheLast2Weeks, boolean hasMetInfectedPeopleInTheLast2Weeks, int daysSinceLastWentOut, List<String> regularPreventiveMeasures) {
+        this.date = LocalDate.now();
         this.gender = gender;
         this.age = age;
         this.belongsToRiskCategory = belongsToRiskCategory;
@@ -30,6 +33,10 @@ public class EntryQuestionnaire {
         this.hasMetInfectedPeopleInTheLast2Weeks = hasMetInfectedPeopleInTheLast2Weeks;
         this.daysSinceLastWentOut = daysSinceLastWentOut;
         this.regularPreventiveMeasures = regularPreventiveMeasures;
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
     public boolean isHasMetInfectedPeopleInTheLast2Weeks() {

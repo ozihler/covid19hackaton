@@ -27,7 +27,7 @@ public class DailyQuestionnaireService {
 
         List<DailyQuestionnaire> dailyQuestionnaires = repository.withUsername(username).get().getDailyQuestionnaires();
         dailyQuestionnaires.add(dailyQuestionnaire);
-        CalculatedScore calculatedScore = new CalculatedScore(repository.withUsername(username).get());
+        CalculatedScoreDaily calculatedScore = new CalculatedScoreDaily(repository.withUsername(username).get());
         return calculatedScore.value();
     }
 }
