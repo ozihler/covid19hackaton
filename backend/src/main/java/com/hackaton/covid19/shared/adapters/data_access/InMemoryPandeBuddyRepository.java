@@ -23,11 +23,24 @@ public class InMemoryPandeBuddyRepository
 
     public InMemoryPandeBuddyRepository() {
         this.pandeBuddies = new HashMap<>();
-        List<PandeBuddy> pandeBuddies = new ArrayList<>();
-        PandeBuddy monique = new PandeBuddy(Username.from("Monique"), new PandeBuddies(pandeBuddies));
-        PandeBuddy olly = new PandeBuddy(Username.from("Olly"), new PandeBuddies(List.of(monique)));
-        pandeBuddies.add(olly);
 
+
+        List<PandeBuddy> pandeBuddies = new ArrayList<>();
+        pandeBuddies.add(new PandeBuddy(Username.from("Olly"), new PandeBuddies(List.of())));
+        pandeBuddies.add(new PandeBuddy(Username.from("Monique"), new PandeBuddies(List.of())));
+        pandeBuddies.add(new PandeBuddy(Username.from("Sandro"), new PandeBuddies(List.of())));
+        pandeBuddies.add(new PandeBuddy(Username.from("Simona"), new PandeBuddies(List.of())));
+        pandeBuddies.add(new PandeBuddy(Username.from("Fabian"), new PandeBuddies(List.of())));
+        pandeBuddies.add(new PandeBuddy(Username.from("Hannah"), new PandeBuddies(List.of())));
+
+        PandeBuddy alina = new PandeBuddy(Username.from("Alina"), new PandeBuddies(pandeBuddies));
+
+        List<PandeBuddy> buddiesOfMonique = new ArrayList<>();
+        PandeBuddy monique = new PandeBuddy(Username.from("Monique"), new PandeBuddies(buddiesOfMonique));
+        PandeBuddy olly = new PandeBuddy(Username.from("Olly"), new PandeBuddies(List.of(monique)));
+        buddiesOfMonique.add(olly);
+
+        this.pandeBuddies.put(alina.getUsername(), alina);
         this.pandeBuddies.put(olly.getUsername(), olly);
         this.pandeBuddies.put(monique.getUsername(), monique);
     }
