@@ -2,10 +2,10 @@ package com.hackaton.covid19.updatescore;
 
 import java.util.List;
 
-public class Questionaire {
+public class Questionnaire {
     private List<Question> questions;
 
-    public Questionaire(List<Question> questions) {
+    public Questionnaire(List<Question> questions) {
         this.questions = questions;
     }
 

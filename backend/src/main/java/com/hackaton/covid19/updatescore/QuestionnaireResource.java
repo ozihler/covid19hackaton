@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class QuestionaireResource {
+public class QuestionnaireResource {
 
-    @GetMapping("/questionaire")
-    public Questionaire getQuestionaire() {
+    @GetMapping("/questionnaire")
+    public Questionnaire getQuestionnaire() {
 
-        return new Questionaire(List.of(
+        return new Questionnaire(List.of(
                 new Question("1", "What is your name", 10, "iconname")
         ));
     }
