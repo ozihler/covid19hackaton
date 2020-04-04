@@ -28,9 +28,7 @@ public class PandeBuddiesUseCase implements PandeBuddiesInboundPort {
     @Override
     public void invokeWith(Username username, PandeBuddiesPresenter output) {
         PandeBuddies pandeBuddies =  fetchPandeBuddies.forPandeBuddy(username);
-
         PandeBuddiesDocument pandeBuddiesDocument = toDocument(pandeBuddies);
-
         output.present(pandeBuddiesDocument);
     }
 
@@ -39,6 +37,13 @@ public class PandeBuddiesUseCase implements PandeBuddiesInboundPort {
         PandeBuddy addedToBuddiesPandeBuddy = pandeBuddy.addToPandeBuddies(newBuddyUsername, username);
         PandeBuddyDocument pandeBuddyDocument = toDocument(addedToBuddiesPandeBuddy);
         output.add(pandeBuddyDocument);
+    }
+
+    @Override
+    public void searchWith(Username username, PandeBuddiesPresenter output) {
+        PandeBuddies pandeBuddies =  fetchPandeBuddies.searchPandeBuddies(username);
+        PandeBuddiesDocument pandeBuddiesDocument = toDocument(pandeBuddies);
+        output.present(pandeBuddiesDocument);
     }
 
     private PandeBuddiesDocument toDocument(PandeBuddies pandeBuddies) {

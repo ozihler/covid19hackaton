@@ -5,4 +5,5 @@ import com.hackaton.covid19.shared.domain.values.PandeBuddies;
 
 public interface FetchPandeBuddies {
     PandeBuddies forPandeBuddy(Username username);
+    PandeBuddies searchPandeBuddies(Username usernameFragment);
 }

@@ -27,4 +27,13 @@ public class ShowPandeBuddiesController {
 
         return output.getResponsePandeBuddies();
     }
+
+    public ResponseEntity<PandeBuddiesJson> searchPandeBuddies(String pandeName) {
+        Username username = Username.from(pandeName);
+        JsonPandeBuddiesPresenter output = new JsonPandeBuddiesPresenter();
+
+        pandeBuddies.searchWith(username, output);
+
+        return output.getResponsePandeBuddies();
+    }
 }

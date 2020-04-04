@@ -21,4 +21,12 @@ public class ShowPandeBuddiesResource {
     public ResponseEntity<PandeBuddiesJson> getPandeBuddies(@PathVariable("pandeName") String pandeName) {
         return this.showPandeBuddiesController.showPandeBuddiesFor(pandeName);
     }
+
+    @GetMapping(
+            path = "/pandebuddies/{pandeName}",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+    )
+    public ResponseEntity<PandeBuddiesJson> searchPandeBuddies(@PathVariable("pandeName") String pandeName) {
+        return this.showPandeBuddiesController.searchPandeBuddies(pandeName);
+    }
 }

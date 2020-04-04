@@ -1,6 +1,5 @@
 package com.hackaton.covid19.shared.adapters.data_access;
 
-import com.hackaton.covid19.register.application.exceptions.UserAlreadyRegisteredException;
 import com.hackaton.covid19.shared.adapters.data_access.exceptions.PandeBuddyNotFoundException;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddies;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
@@ -55,6 +54,10 @@ public class InMemoryPandeBuddyRepository
         }
     }
 
+    public int count() {
+        return pandeBuddies.size();
+    }
+
     @Override
     public PandeBuddy withValues(PandeBuddy pandeBuddy) {
         this.pandeBuddies.put(pandeBuddy.getUsername(), pandeBuddy);
@@ -72,9 +75,16 @@ public class InMemoryPandeBuddyRepository
         return pandeBuddy.getPandeBuddies();
     }
 
-
-    public int count() {
-        return pandeBuddies.size();
+    @Override
+    public PandeBuddies searchPandeBuddies(Username usernameFragment){
+        Set<Username> usernames = pandeBuddies.keySet();
+        List<PandeBuddy> pandeBuddiesProposalsList = new ArrayList<>();
+        for (Username username:usernames) {
+            if(username.value().contains(usernameFragment.value())){
+                pandeBuddiesProposalsList.add(pandeBuddies.get(username));
+            }
+        }
+        return new PandeBuddies(pandeBuddiesProposalsList);
     }
 
     @Override
