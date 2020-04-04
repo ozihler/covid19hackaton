@@ -3,30 +3,30 @@ package com.hackaton.covid19.register.adapters.presentation.controllers;
 import com.hackaton.covid19.register.adapters.presentation.presenters.RestCreatedUserPresenter;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UserJson;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
-import com.hackaton.covid19.register.application.use_cases.RegisterUserUseCase;
-import com.hackaton.covid19.register.application.use_cases.inbound_port.RegisterUser;
+import com.hackaton.covid19.register.application.use_cases.RegisterPandeBuddyUseCase;
+import com.hackaton.covid19.register.application.use_cases.inbound_port.RegisterPandeBuddy;
 import com.hackaton.covid19.register.domain.values.Username;
-import com.hackaton.covid19.shared.application.outbound_ports.FetchUser;
-import com.hackaton.covid19.shared.application.outbound_ports.StoreUser;
+import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
+import com.hackaton.covid19.shared.application.outbound_ports.StorePandeBuddy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RegisterUserController {
+public class RegisterPandeBuddyController {
 
-    private RegisterUser registerUser;
+    private RegisterPandeBuddy registerPandeBuddy;
 
     @Autowired
-    public RegisterUserController(FetchUser fetchUser, StoreUser storeUser) {
-        this.registerUser = new RegisterUserUseCase(fetchUser, storeUser);
+    public RegisterPandeBuddyController(FetchPandeBuddy fetchPandeBuddy, StorePandeBuddy storePandeBuddy) {
+        this.registerPandeBuddy = new RegisterPandeBuddyUseCase(fetchPandeBuddy, storePandeBuddy);
     }
 
     public ResponseEntity<UserJson> registerUserWith(UsernameJson requestUsername) {
         var username = Username.from(requestUsername.getUsername());
         var output = new RestCreatedUserPresenter();
 
-        this.registerUser.invokeWith(username, output);
+        this.registerPandeBuddy.invokeWith(username, output);
 
         return output.response();
     }

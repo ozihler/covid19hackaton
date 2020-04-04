@@ -1,6 +1,6 @@
 package com.hackaton.covid19.register.adapters.presentation.resources;
 
-import com.hackaton.covid19.register.adapters.presentation.controllers.RegisterUserController;
+import com.hackaton.covid19.register.adapters.presentation.controllers.RegisterPandeBuddyController;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UserJson;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
 import org.springframework.http.MediaType;
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RegisterResource {
+public class RegisterPandeBuddyResource {
 
-    private final RegisterUserController registerUserController;
+    private final RegisterPandeBuddyController registerPandeBuddyController;
 
-    public RegisterResource(RegisterUserController registerUserController) {
-        this.registerUserController = registerUserController;
+    public RegisterPandeBuddyResource(RegisterPandeBuddyController registerPandeBuddyController) {
+        this.registerPandeBuddyController = registerPandeBuddyController;
     }
 
     @PostMapping(
@@ -25,7 +25,7 @@ public class RegisterResource {
     )
     public ResponseEntity<UserJson> register(@RequestBody UsernameJson requestUsername) {
 
-        return registerUserController.registerUserWith(requestUsername);
+        return registerPandeBuddyController.registerUserWith(requestUsername);
 
     }
 

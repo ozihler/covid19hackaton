@@ -4,7 +4,6 @@ public class UserJson {
     private String username;
 
     public UserJson() {
-
     }
 
     public UserJson(String username) {

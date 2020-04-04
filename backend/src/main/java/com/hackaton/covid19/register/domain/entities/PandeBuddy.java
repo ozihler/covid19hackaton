@@ -2,11 +2,11 @@ package com.hackaton.covid19.register.domain.entities;
 
 import com.hackaton.covid19.register.domain.values.Username;
 
-public class User {
+public class PandeBuddy {
 
     private Username username;
 
-    public User(Username username) {
+    public PandeBuddy(Username username) {
         this.username = username;
     }
 
