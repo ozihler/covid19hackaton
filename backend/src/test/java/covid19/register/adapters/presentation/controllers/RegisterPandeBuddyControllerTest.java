@@ -2,7 +2,7 @@ package covid19.register.adapters.presentation.controllers;
 
 
 import com.hackaton.covid19.register.adapters.presentation.controllers.RegisterPandeBuddyController;
-import com.hackaton.covid19.register.adapters.presentation.viewmodels.UserJson;
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
 import com.hackaton.covid19.register.application.exceptions.UserAlreadyRegisteredException;
 import com.hackaton.covid19.register.domain.values.Username;
@@ -18,7 +18,7 @@ class RegisterPandeBuddyControllerTest {
     void test() {
         var repo = new InMemoryPandeBuddyRepository();
         var controller = new RegisterPandeBuddyController(repo, repo);
-        ResponseEntity<UserJson> response = controller.registerUserWith(new UsernameJson("Olly"));
+        ResponseEntity<PandeBuddyJson> response = controller.registerUserWith(new UsernameJson("Olly"));
 
         assertEquals("Olly", response.getBody().getUsername());
         assertEquals(1, repo.count());

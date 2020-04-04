@@ -1,7 +1,7 @@
 package com.hackaton.covid19.register.adapters.presentation.resources;
 
 import com.hackaton.covid19.register.adapters.presentation.controllers.RegisterPandeBuddyController;
-import com.hackaton.covid19.register.adapters.presentation.viewmodels.UserJson;
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class RegisterPandeBuddyResource {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public ResponseEntity<UserJson> register(@RequestBody UsernameJson requestUsername) {
+    public ResponseEntity<PandeBuddyJson> register(@RequestBody UsernameJson requestUsername) {
 
         return registerPandeBuddyController.registerUserWith(requestUsername);
 

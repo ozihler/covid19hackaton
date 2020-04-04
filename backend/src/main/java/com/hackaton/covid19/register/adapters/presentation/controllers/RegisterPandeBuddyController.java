@@ -1,7 +1,7 @@
 package com.hackaton.covid19.register.adapters.presentation.controllers;
 
 import com.hackaton.covid19.register.adapters.presentation.presenters.RestCreatedUserPresenter;
-import com.hackaton.covid19.register.adapters.presentation.viewmodels.UserJson;
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
 import com.hackaton.covid19.register.application.use_cases.RegisterPandeBuddyUseCase;
 import com.hackaton.covid19.register.application.use_cases.inbound_port.RegisterPandeBuddy;
@@ -22,7 +22,7 @@ public class RegisterPandeBuddyController {
         this.registerPandeBuddy = new RegisterPandeBuddyUseCase(fetchPandeBuddy, storePandeBuddy);
     }
 
-    public ResponseEntity<UserJson> registerUserWith(UsernameJson requestUsername) {
+    public ResponseEntity<PandeBuddyJson> registerUserWith(UsernameJson requestUsername) {
         var username = Username.from(requestUsername.getUsername());
         var output = new RestCreatedUserPresenter();
 

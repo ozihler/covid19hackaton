@@ -1,6 +1,6 @@
 package com.hackaton.covid19.register.application.use_cases;
 
-import com.hackaton.covid19.register.application.outbound_ports.UserDocument;
+import com.hackaton.covid19.register.application.outbound_ports.PandeBuddyDocument;
 import com.hackaton.covid19.register.application.exceptions.UserAlreadyRegisteredException;
 import com.hackaton.covid19.register.application.outbound_ports.CreatedUserPresenter;
 import com.hackaton.covid19.register.application.use_cases.inbound_port.RegisterPandeBuddy;
@@ -26,11 +26,11 @@ public class RegisterPandeBuddyUseCase implements RegisterPandeBuddy {
         }
         var user = new PandeBuddy(username);
         var storedUser = storePandeBuddy.withValues(user);
-        UserDocument userDocument = toDocument(storedUser);
-        output.present(userDocument);
+        PandeBuddyDocument pandeBuddyDocument = toDocument(storedUser);
+        output.present(pandeBuddyDocument);
     }
 
-    private UserDocument toDocument(PandeBuddy storedPandeBuddy) {
-        return new UserDocument(storedPandeBuddy.getUsername());
+    private PandeBuddyDocument toDocument(PandeBuddy storedPandeBuddy) {
+        return new PandeBuddyDocument(storedPandeBuddy.getUsername());
     }
 }

@@ -1,24 +1,24 @@
 package com.hackaton.covid19.register.adapters.presentation.presenters;
 
-import com.hackaton.covid19.register.adapters.presentation.viewmodels.UserJson;
-import com.hackaton.covid19.register.application.outbound_ports.UserDocument;
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
+import com.hackaton.covid19.register.application.outbound_ports.PandeBuddyDocument;
 import com.hackaton.covid19.register.application.outbound_ports.CreatedUserPresenter;
 import com.hackaton.covid19.register.domain.values.Username;
 import org.springframework.http.ResponseEntity;
 
 public class RestCreatedUserPresenter implements CreatedUserPresenter {
 
-    private ResponseEntity<UserJson> response;
+    private ResponseEntity<PandeBuddyJson> response;
 
-    public ResponseEntity<UserJson> response() {
+    public ResponseEntity<PandeBuddyJson> response() {
         return response;
     }
 
     @Override
-    public void present(UserDocument userDocument) {
-        Username username = userDocument.getUsername();
+    public void present(PandeBuddyDocument pandeBuddyDocument) {
+        Username username = pandeBuddyDocument.getUsername();
         String value = username.value();
-        UserJson userJson = new UserJson(value);
-        response = ResponseEntity.ok(userJson);
+        PandeBuddyJson pandeBuddyJson = new PandeBuddyJson(value);
+        response = ResponseEntity.ok(pandeBuddyJson);
     }
 }
