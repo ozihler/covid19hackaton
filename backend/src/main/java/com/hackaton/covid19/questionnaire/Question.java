@@ -1,4 +1,4 @@
-package com.hackaton.covid19.updatescore;
+package com.hackaton.covid19.questionnaire;
 
 public class Question {
     private String id;

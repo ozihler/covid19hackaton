@@ -1,4 +1,4 @@
-package com.hackaton.covid19.updatescore;
+package com.hackaton.covid19.questionnaire;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
