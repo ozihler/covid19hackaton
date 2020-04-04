@@ -4,14 +4,16 @@ public class ScoreJson {
     private int value;
     private String color;
     private int daysLeftToMeet;
+    private boolean noMeet;
 
     public ScoreJson() {
     }
 
-    public ScoreJson(int value, String color, int daysLeftToMeet) {
+    public ScoreJson(int value, String color, int daysLeftToMeet, boolean noMeet) {
         this.value = value;
         this.color = color;
         this.daysLeftToMeet = daysLeftToMeet;
+        this.noMeet = noMeet;
     }
 
     public int getValue() {
@@ -36,5 +38,13 @@ public class ScoreJson {
 
     public void setDaysLeftToMeet(int daysLeftToMeet) {
         this.daysLeftToMeet = daysLeftToMeet;
+    }
+
+    public boolean isNoMeet() {
+        return noMeet;
+    }
+
+    public void setNoMeet(boolean noMeet) {
+        this.noMeet = noMeet;
     }
 }

@@ -40,7 +40,7 @@ public class RestCreatedUserPresenter implements CreatedUserPresenter {
         return new ScoreJson(
                 score.getValue(),
                 score.getColor(),
-                score.getDaysLeftToMeet()
+                score.getDaysLeftToMeet(), false
         );
     }
 }

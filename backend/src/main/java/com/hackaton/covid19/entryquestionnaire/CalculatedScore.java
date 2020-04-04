@@ -10,9 +10,9 @@ public class CalculatedScore {
     }
 
     public ScoreJson value() {
+        var entryQuestionnaireScore = new EntryQuestionnaireScore(entryQuestionnaire);
 
-        ScoreJson scoreJson = new ScoreJson();
-        //int scoreValue = 0;if(entryQuestionnaire.get)
-        return scoreJson;
+        return entryQuestionnaireScore.score();
     }
+
 }

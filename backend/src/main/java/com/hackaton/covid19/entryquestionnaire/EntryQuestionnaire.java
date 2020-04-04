@@ -1,47 +1,60 @@
 package com.hackaton.covid19.entryquestionnaire;
 
 import java.util.List;
-import java.util.Objects;
 
 public class EntryQuestionnaire {
     private String gender;
-    private String age;
+    private int age;
     private boolean belongsToRiskCategory;
     private boolean hadSymptoms;
+    private boolean hasTraveledAbroad;
     private int numberOfPeopleInHousehold;
     private boolean livesWithPeopleOfRiskCategory;
     private int numberOfPeopleMetInTheLast2Weeks;
+    private boolean hasMetInfectedPeopleInTheLast2Weeks;
     private int daysSinceLastWentOut;
     private List<String> regularPreventiveMeasures;
 
     public EntryQuestionnaire() {
     }
 
-    public EntryQuestionnaire(String gender, String age, boolean belongsToRiskCategory, boolean hadSymptoms, int numberOfPeopleInHousehold, boolean livesWithPeopleOfRiskCategory, int numberOfPeopleMetInTheLast2Weeks, int daysSinceLastWentOut, List<String> regularPreventiveMeasures) {
+    public EntryQuestionnaire(String gender, int age, boolean belongsToRiskCategory, boolean hadSymptoms, boolean hasTraveledAbroad, int numberOfPeopleInHousehold, boolean livesWithPeopleOfRiskCategory, int numberOfPeopleMetInTheLast2Weeks, boolean hasMetInfectedPeopleInTheLast2Weeks, int daysSinceLastWentOut, List<String> regularPreventiveMeasures) {
         this.gender = gender;
         this.age = age;
         this.belongsToRiskCategory = belongsToRiskCategory;
         this.hadSymptoms = hadSymptoms;
+        this.hasTraveledAbroad = hasTraveledAbroad;
         this.numberOfPeopleInHousehold = numberOfPeopleInHousehold;
         this.livesWithPeopleOfRiskCategory = livesWithPeopleOfRiskCategory;
         this.numberOfPeopleMetInTheLast2Weeks = numberOfPeopleMetInTheLast2Weeks;
+        this.hasMetInfectedPeopleInTheLast2Weeks = hasMetInfectedPeopleInTheLast2Weeks;
         this.daysSinceLastWentOut = daysSinceLastWentOut;
         this.regularPreventiveMeasures = regularPreventiveMeasures;
+    }
+
+    public boolean isHasMetInfectedPeopleInTheLast2Weeks() {
+        return hasMetInfectedPeopleInTheLast2Weeks;
     }
 
     @Override
     public String toString() {
         return "EntryQuestionnaire{" +
                 "gender='" + gender + '\'' +
-                ", age='" + age + '\'' +
+                ", age=" + age +
                 ", belongsToRiskCategory=" + belongsToRiskCategory +
                 ", hadSymptoms=" + hadSymptoms +
+                ", hasTraveledAbroad=" + hasTraveledAbroad +
                 ", numberOfPeopleInHousehold=" + numberOfPeopleInHousehold +
                 ", livesWithPeopleOfRiskCategory=" + livesWithPeopleOfRiskCategory +
                 ", numberOfPeopleMetInTheLast2Weeks=" + numberOfPeopleMetInTheLast2Weeks +
+                ", hasMetInfectedPeopleInTheLast2Weeks=" + hasMetInfectedPeopleInTheLast2Weeks +
                 ", daysSinceLastWentOut=" + daysSinceLastWentOut +
                 ", regularPreventiveMeasures=" + regularPreventiveMeasures +
                 '}';
+    }
+
+    public void setHasMetInfectedPeopleInTheLast2Weeks(boolean hasMetInfectedPeopleInTheLast2Weeks) {
+        this.hasMetInfectedPeopleInTheLast2Weeks = hasMetInfectedPeopleInTheLast2Weeks;
     }
 
     public String getGender() {
@@ -50,14 +63,6 @@ public class EntryQuestionnaire {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
     }
 
     public boolean isBelongsToRiskCategory() {
@@ -114,5 +119,21 @@ public class EntryQuestionnaire {
 
     public void setRegularPreventiveMeasures(List<String> regularPreventiveMeasures) {
         this.regularPreventiveMeasures = regularPreventiveMeasures;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isHasTraveledAbroad() {
+        return hasTraveledAbroad;
+    }
+
+    public void setHasTraveledAbroad(boolean hasTraveledAbroad) {
+        this.hasTraveledAbroad = hasTraveledAbroad;
     }
 }

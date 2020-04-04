@@ -3,7 +3,6 @@ package com.hackaton.covid19.pandebuddies.adapters.presentation.presenters;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.shared.application.outbound_ports.PandeBuddyDocument;
-import com.hackaton.covid19.shared.domain.entities.PandeBuddy;
 import com.hackaton.covid19.shared.domain.values.Score;
 import com.hackaton.covid19.shared.domain.values.Username;
 import com.hackaton.covid19.pandebuddies.adapters.presentation.viewmodels.PandeBuddiesJson;
@@ -55,6 +54,6 @@ public class JsonPandeBuddiesPresenter implements PandeBuddiesPresenter {
     }
 
     private ScoreJson toJson(Score score) {
-        return new ScoreJson(score.getValue(), score.getColor(), score.getDaysLeftToMeet());
+        return new ScoreJson(score.getValue(), score.getColor(), score.getDaysLeftToMeet(), false);
     }
 }
