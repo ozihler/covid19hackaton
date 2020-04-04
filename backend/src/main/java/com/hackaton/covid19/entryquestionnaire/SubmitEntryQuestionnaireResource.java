@@ -17,7 +17,7 @@ public class SubmitEntryQuestionnaireResource {
     }
 
     @PostMapping("entryQuestionnaire")
-    public ResponseEntity submitEntryQuestionnaire(@RequestHeader("pandeName") String pandeName, @RequestBody EntryQuestionnaire entryQuestionnaire) {
+    public ResponseEntity<EntryQuestionnaire> submitEntryQuestionnaire(@RequestHeader("pandeName") String pandeName, @RequestBody EntryQuestionnaire entryQuestionnaire) {
         EntryQuestionnaire stored = this.entryQuestionnaireService.storeQuestionnaire(pandeName,entryQuestionnaire);
         return ResponseEntity.ok(stored);
     }

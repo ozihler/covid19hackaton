@@ -1,15 +1,14 @@
 package com.hackaton.covid19.register.application.use_cases;
 
-import com.hackaton.covid19.shared.application.outbound_ports.PandeBuddyDocument;
-import com.hackaton.covid19.register.application.exceptions.UserAlreadyRegisteredException;
 import com.hackaton.covid19.register.application.outbound_ports.CreatedUserPresenter;
 import com.hackaton.covid19.register.application.use_cases.inbound_port.RegisterPandeBuddy;
+import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
+import com.hackaton.covid19.shared.application.outbound_ports.PandeBuddyDocument;
+import com.hackaton.covid19.shared.application.outbound_ports.StorePandeBuddy;
 import com.hackaton.covid19.shared.domain.entities.PandeBuddy;
 import com.hackaton.covid19.shared.domain.values.PandeBuddies;
 import com.hackaton.covid19.shared.domain.values.Score;
 import com.hackaton.covid19.shared.domain.values.Username;
-import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
-import com.hackaton.covid19.shared.application.outbound_ports.StorePandeBuddy;
 
 import java.util.ArrayList;
 
@@ -25,13 +24,17 @@ public class RegisterPandeBuddyUseCase implements RegisterPandeBuddy {
 
     @Override
     public void invokeWith(Username username, CreatedUserPresenter output) {
+        PandeBuddy user;
         if (fetchPandeBuddy.exists(username)) {
-            throw new UserAlreadyRegisteredException(username.value());
+            user = fetchPandeBuddy.withUsername(username).get();
+            PandeBuddyDocument pandeBuddyDocument = toDocument(user);
+            output.present(pandeBuddyDocument, true);
+        } else {
+            user = new PandeBuddy(username, new PandeBuddies(new ArrayList<PandeBuddy>()), "", new Score());
+            user = storePandeBuddy.withValues(user);
+            PandeBuddyDocument pandeBuddyDocument = toDocument(user);
+            output.present(pandeBuddyDocument, false);
         }
-        var user = new PandeBuddy(username, new PandeBuddies(new ArrayList<PandeBuddy>()), "", new Score());
-        var storedUser = storePandeBuddy.withValues(user);
-        PandeBuddyDocument pandeBuddyDocument = toDocument(storedUser);
-        output.present(pandeBuddyDocument);
     }
 
     private PandeBuddyDocument toDocument(PandeBuddy storedPandeBuddy) {

@@ -6,6 +6,7 @@ import com.hackaton.covid19.register.application.outbound_ports.CreatedUserPrese
 import com.hackaton.covid19.shared.application.outbound_ports.PandeBuddyDocument;
 import com.hackaton.covid19.shared.domain.values.Score;
 import com.hackaton.covid19.shared.domain.values.Username;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public class RestCreatedUserPresenter implements CreatedUserPresenter {
@@ -17,7 +18,7 @@ public class RestCreatedUserPresenter implements CreatedUserPresenter {
     }
 
     @Override
-    public void present(PandeBuddyDocument pandeBuddyDocument) {
+    public void present(PandeBuddyDocument pandeBuddyDocument, boolean exists) {
         Username username = pandeBuddyDocument.getUsername();
         String value = username.value();
         PandeBuddyJson pandeBuddyJson = new PandeBuddyJson(
@@ -28,7 +29,11 @@ public class RestCreatedUserPresenter implements CreatedUserPresenter {
         );
 
         pandeBuddyJson.setEntryQuestionnaire(pandeBuddyDocument.getEntryQuestionnaire());
-        response = ResponseEntity.ok(pandeBuddyJson);
+        if (exists) {
+            response = ResponseEntity.ok(pandeBuddyJson);
+        } else {
+            response = ResponseEntity.status(HttpStatus.CREATED).body(pandeBuddyJson);
+        }
     }
 
     private ScoreJson toJson(Score score) {
