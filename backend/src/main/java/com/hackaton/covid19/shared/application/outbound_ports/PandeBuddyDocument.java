@@ -1,6 +1,6 @@
-package com.hackaton.covid19.register.application.outbound_ports;
+package com.hackaton.covid19.shared.application.outbound_ports;
 
-import com.hackaton.covid19.register.domain.values.Username;
+import com.hackaton.covid19.shared.domain.values.Username;
 
 public class PandeBuddyDocument {
 

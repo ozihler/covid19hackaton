@@ -5,7 +5,7 @@ import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddy
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
 import com.hackaton.covid19.register.application.use_cases.RegisterPandeBuddyUseCase;
 import com.hackaton.covid19.register.application.use_cases.inbound_port.RegisterPandeBuddy;
-import com.hackaton.covid19.register.domain.values.Username;
+import com.hackaton.covid19.shared.domain.values.Username;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
 import com.hackaton.covid19.shared.application.outbound_ports.StorePandeBuddy;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.hackaton.covid19.register.domain.values;
+package com.hackaton.covid19.shared.domain.values;
 
 import java.util.Objects;
 
@@ -29,5 +29,10 @@ public class Username {
     @Override
     public int hashCode() {
         return Objects.hash(username);
+    }
+
+    @Override
+    public String toString() {
+        return username;
     }
 }

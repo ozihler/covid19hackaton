@@ -5,7 +5,7 @@ import com.hackaton.covid19.register.adapters.presentation.controllers.RegisterP
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.UsernameJson;
 import com.hackaton.covid19.register.application.exceptions.UserAlreadyRegisteredException;
-import com.hackaton.covid19.register.domain.values.Username;
+import com.hackaton.covid19.shared.domain.values.Username;
 import com.hackaton.covid19.shared.adapters.data_access.InMemoryPandeBuddyRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;

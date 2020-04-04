@@ -1,6 +1,7 @@
 package com.hackaton.covid19.welcome_message.adapters.infrastructure;
 
 import com.hackaton.covid19.register.application.exceptions.UserAlreadyRegisteredException;
+import com.hackaton.covid19.shared.adapters.data_access.exceptions.PandeBuddyNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.Arrays;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.I_AM_A_TEAPOT;
+import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.ResponseEntity.status;
 
 @ControllerAdvice
@@ -27,6 +27,13 @@ public class ErrorHandling {
     public ResponseEntity<ErrorViewModel> handleUserAlreadyRegisteredException(Exception bad) {
         log(bad);
         return status(BAD_REQUEST).body(new ErrorViewModel(bad.getMessage() + "\n" + Arrays.toString(bad.getStackTrace())));
+    }
+
+    @ExceptionHandler(value = PandeBuddyNotFoundException.class)
+    public ResponseEntity<ErrorViewModel> handlePandeBuddyNotFoundException(Exception bad) {
+        log(bad);
+        return status(NOT_FOUND)
+                .body(new ErrorViewModel(bad.getMessage() + "\n" + Arrays.toString(bad.getStackTrace())));
     }
 
     private void log(Exception bad) {
