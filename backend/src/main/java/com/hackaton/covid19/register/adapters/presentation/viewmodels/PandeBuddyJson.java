@@ -16,8 +16,11 @@ public class PandeBuddyJson {
     public PandeBuddyJson() {
     }
 
-    public PandeBuddyJson(String username) {
+    public PandeBuddyJson(String username, List<PandeBuddyJson> pandeBuddies, String imageUrl, ScoreJson score) {
         this.username = username;
+        this.pandeBuddies = pandeBuddies;
+        this.imageUrl = imageUrl;
+        this.score = score;
     }
 
     public String getUsername() {

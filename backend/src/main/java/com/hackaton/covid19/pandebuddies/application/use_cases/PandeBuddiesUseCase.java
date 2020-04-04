@@ -2,6 +2,7 @@ package com.hackaton.covid19.pandebuddies.application.use_cases;
 
 import com.hackaton.covid19.shared.application.outbound_ports.*;
 import com.hackaton.covid19.shared.domain.entities.PandeBuddy;
+import com.hackaton.covid19.shared.domain.values.PandeBuddies;
 import com.hackaton.covid19.shared.domain.values.Username;
 import com.hackaton.covid19.pandebuddies.application.PandeBuddiesDocument;
 import com.hackaton.covid19.pandebuddies.application.outbound_ports.PandeBuddiesPresenter;
@@ -26,7 +27,7 @@ public class PandeBuddiesUseCase implements PandeBuddiesInboundPort {
 
     @Override
     public void invokeWith(Username username, PandeBuddiesPresenter output) {
-        com.hackaton.covid19.shared.domain.values.PandeBuddies pandeBuddies =  fetchPandeBuddies.forPandeBuddy(username);
+        PandeBuddies pandeBuddies =  fetchPandeBuddies.forPandeBuddy(username);
 
         PandeBuddiesDocument pandeBuddiesDocument = toDocument(pandeBuddies);
 
@@ -40,7 +41,7 @@ public class PandeBuddiesUseCase implements PandeBuddiesInboundPort {
         output.add(pandeBuddyDocument);
     }
 
-    private PandeBuddiesDocument toDocument(com.hackaton.covid19.shared.domain.values.PandeBuddies pandeBuddies) {
+    private PandeBuddiesDocument toDocument(PandeBuddies pandeBuddies) {
         List<PandeBuddyDocument> pandeBuddyDocuments = pandeBuddies.getPandeBuddies()
                 .stream()
                 .map(this::toDocument)
@@ -50,7 +51,7 @@ public class PandeBuddiesUseCase implements PandeBuddiesInboundPort {
     }
 
     private PandeBuddyDocument toDocument(PandeBuddy pandeBuddy) {
-        return new PandeBuddyDocument(pandeBuddy.getUsername());
+        return new PandeBuddyDocument(pandeBuddy.getUsername(), null, pandeBuddy.getImageUrl(), pandeBuddy.getScore());
     }
 
 }
