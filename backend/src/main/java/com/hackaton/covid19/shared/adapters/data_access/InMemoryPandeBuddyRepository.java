@@ -57,9 +57,6 @@ public class InMemoryPandeBuddyRepository
 
     @Override
     public PandeBuddy withValues(PandeBuddy pandeBuddy) {
-        if (exists(pandeBuddy.getUsername())) {
-            throw new UserAlreadyRegisteredException(pandeBuddy.getUsername().value());
-        }
         this.pandeBuddies.put(pandeBuddy.getUsername(), pandeBuddy);
         return pandeBuddy;
     }

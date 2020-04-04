@@ -1,6 +1,7 @@
 package com.hackaton.covid19.register.adapters.presentation.viewmodels;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaire;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class PandeBuddyJson {
     private List<PandeBuddyJson> pandeBuddies;
     private String imageUrl;
     private ScoreJson score = new ScoreJson();
+    private EntryQuestionnaire entryQuestionnaire;
 
 
     public PandeBuddyJson() {
@@ -53,5 +55,9 @@ public class PandeBuddyJson {
 
     public void setScore(ScoreJson score) {
         this.score = score;
+    }
+
+    public void setEntryQuestionnaire(EntryQuestionnaire entryQuestionnaire) {
+        this.entryQuestionnaire = entryQuestionnaire;
     }
 }

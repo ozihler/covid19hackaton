@@ -20,8 +20,14 @@ public class RestCreatedUserPresenter implements CreatedUserPresenter {
     public void present(PandeBuddyDocument pandeBuddyDocument) {
         Username username = pandeBuddyDocument.getUsername();
         String value = username.value();
-        PandeBuddyJson pandeBuddyJson = new PandeBuddyJson(pandeBuddyDocument.getUsername().value(),
-                null, pandeBuddyDocument.getImageUrl(), toJson(pandeBuddyDocument.getScore()));
+        PandeBuddyJson pandeBuddyJson = new PandeBuddyJson(
+                pandeBuddyDocument.getUsername().value(),
+                null,
+                pandeBuddyDocument.getImageUrl(),
+                toJson(pandeBuddyDocument.getScore())
+        );
+
+        pandeBuddyJson.setEntryQuestionnaire(pandeBuddyDocument.getEntryQuestionnaire());
         response = ResponseEntity.ok(pandeBuddyJson);
     }
 

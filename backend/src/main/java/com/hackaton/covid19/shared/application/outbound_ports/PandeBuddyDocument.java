@@ -1,5 +1,6 @@
 package com.hackaton.covid19.shared.application.outbound_ports;
 
+import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaire;
 import com.hackaton.covid19.pandebuddies.application.PandeBuddiesDocument;
 import com.hackaton.covid19.shared.domain.values.Score;
 import com.hackaton.covid19.shared.domain.values.Username;
@@ -10,6 +11,7 @@ public class PandeBuddyDocument {
     private PandeBuddiesDocument pandeBuddies;
     private String imageUrl;
     private Score score;
+    private EntryQuestionnaire entryQuestionnaire;
 
     public PandeBuddyDocument() {
     }
@@ -52,5 +54,14 @@ public class PandeBuddyDocument {
 
     public void setScore(Score score) {
         this.score = score;
+    }
+
+    public void setEntryQuestionnaire(EntryQuestionnaire entryQuestionnaire) {
+
+        this.entryQuestionnaire = entryQuestionnaire;
+    }
+
+    public EntryQuestionnaire getEntryQuestionnaire() {
+        return entryQuestionnaire;
     }
 }

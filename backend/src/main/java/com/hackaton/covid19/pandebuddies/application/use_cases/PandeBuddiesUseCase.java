@@ -51,7 +51,9 @@ public class PandeBuddiesUseCase implements PandeBuddiesInboundPort {
     }
 
     private PandeBuddyDocument toDocument(PandeBuddy pandeBuddy) {
-        return new PandeBuddyDocument(pandeBuddy.getUsername(), null, pandeBuddy.getImageUrl(), pandeBuddy.getScore());
+        PandeBuddyDocument pandeBuddyDocument = new PandeBuddyDocument(pandeBuddy.getUsername(), null, pandeBuddy.getImageUrl(), pandeBuddy.getScore());
+        pandeBuddyDocument.setEntryQuestionnaire(pandeBuddy.getEntryQuestionnaire());
+        return pandeBuddyDocument;
     }
 
 }

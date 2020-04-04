@@ -1,5 +1,6 @@
 package com.hackaton.covid19.shared.domain.entities;
 
+import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaire;
 import com.hackaton.covid19.shared.domain.values.PandeBuddies;
 import com.hackaton.covid19.shared.domain.values.Score;
 import com.hackaton.covid19.shared.domain.values.Username;
@@ -10,15 +11,13 @@ public class PandeBuddy {
     private PandeBuddies pandeBuddies;
     private String imageUrl;
     private Score score = new Score();
+    private EntryQuestionnaire entryQuestionnaire;
 
     public PandeBuddy(Username username, PandeBuddies pandeBuddies, String imageUrl, Score score) {
         this.username = username;
         this.pandeBuddies = pandeBuddies;
         this.imageUrl = imageUrl;
         this.score = score;
-    }
-    public PandeBuddy(Username username, PandeBuddies pandeBuddies, String imageUrl) {
-        this(username, pandeBuddies, imageUrl, new Score());
     }
 
     public PandeBuddy() {
@@ -57,4 +56,12 @@ public class PandeBuddy {
         return pandeBuddies;
     }
 
+
+    public EntryQuestionnaire getEntryQuestionnaire() {
+        return entryQuestionnaire;
+    }
+
+    public void setEntryQuestionnaire(EntryQuestionnaire entryQuestionnaire) {
+        this.entryQuestionnaire = entryQuestionnaire;
+    }
 }
