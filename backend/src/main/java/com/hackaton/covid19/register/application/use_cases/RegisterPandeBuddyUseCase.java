@@ -31,7 +31,7 @@ public class RegisterPandeBuddyUseCase implements RegisterPandeBuddy {
             output.present(pandeBuddyDocument, true);
         } else {
             user = new PandeBuddy(username, new PandeBuddies(new ArrayList<PandeBuddy>()), "", new Score());
-            user = storePandeBuddy.withValues(user);
+            user = storePandeBuddy.storePandeBuddy(user);
             PandeBuddyDocument pandeBuddyDocument = toDocument(user);
             output.present(pandeBuddyDocument, false);
         }

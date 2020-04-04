@@ -59,7 +59,7 @@ public class InMemoryPandeBuddyRepository
     }
 
     @Override
-    public PandeBuddy withValues(PandeBuddy pandeBuddy) {
+    public PandeBuddy storePandeBuddy(PandeBuddy pandeBuddy) {
         this.pandeBuddies.put(pandeBuddy.getUsername(), pandeBuddy);
         return pandeBuddy;
     }
