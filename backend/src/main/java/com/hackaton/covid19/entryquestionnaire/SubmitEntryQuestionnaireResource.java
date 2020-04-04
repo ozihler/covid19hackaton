@@ -13,7 +13,8 @@ public class SubmitEntryQuestionnaireResource {
     private EntryQuestionnaireService entryQuestionnaireService;
 
     @Autowired
-    public SubmitEntryQuestionnaireResource() {
+    public SubmitEntryQuestionnaireResource(EntryQuestionnaireService entryQuestionnaireService) {
+        this.entryQuestionnaireService = entryQuestionnaireService;
     }
 
     @PostMapping("entryQuestionnaire")

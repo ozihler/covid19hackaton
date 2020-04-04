@@ -1,6 +1,7 @@
 package com.hackaton.covid19.entryquestionnaire;
 
 import java.util.List;
+import java.util.Objects;
 
 public class EntryQuestionnaire {
     private String gender;
@@ -98,5 +99,41 @@ public class EntryQuestionnaire {
 
     public void setPreventiveMeasuresPerformed(List<String> preventiveMeasuresPerformed) {
         this.preventiveMeasuresPerformed = preventiveMeasuresPerformed;
+    }
+
+    @Override
+    public String toString() {
+        return "EntryQuestionnaire{" +
+                "gender='" + gender + '\'' +
+                ", age='" + age + '\'' +
+                ", riskCategories=" + riskCategories +
+                ", symptoms=" + symptoms +
+                ", travelledAbroad=" + travelledAbroad +
+                ", livesWithPeopleInSameHousehold=" + livesWithPeopleInSameHousehold +
+                ", metInfectedPeople=" + metInfectedPeople +
+                ", daysNotOut=" + daysNotOut +
+                ", preventiveMeasuresPerformed=" + preventiveMeasuresPerformed +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EntryQuestionnaire that = (EntryQuestionnaire) o;
+        return travelledAbroad == that.travelledAbroad &&
+                livesWithPeopleInSameHousehold == that.livesWithPeopleInSameHousehold &&
+                metInfectedPeople == that.metInfectedPeople &&
+                daysNotOut == that.daysNotOut &&
+                Objects.equals(gender, that.gender) &&
+                Objects.equals(age, that.age) &&
+                Objects.equals(riskCategories, that.riskCategories) &&
+                Objects.equals(symptoms, that.symptoms) &&
+                Objects.equals(preventiveMeasuresPerformed, that.preventiveMeasuresPerformed);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(gender, age, riskCategories, symptoms, travelledAbroad, livesWithPeopleInSameHousehold, metInfectedPeople, daysNotOut, preventiveMeasuresPerformed);
     }
 }
