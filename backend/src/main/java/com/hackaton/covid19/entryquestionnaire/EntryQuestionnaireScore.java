@@ -7,6 +7,7 @@ public class EntryQuestionnaireScore {
     public static final int NO_MEET_EVER_IDENTIFICATION_NUMBER = -1;
     public static final int HIGH_RISK_AGE = 65;
     public static final int MAX_DAYS_LEFT_TO_MEET = 14;
+    public static final String DANGER_COLOR = "red";
 
     private EntryQuestionnaire entryQuestionnaire;
 
@@ -15,33 +16,41 @@ public class EntryQuestionnaireScore {
     }
 
     ScoreJson score() {
-        ScoreJson scoreJson = new ScoreJson();
-
-        calculateNoMeetEver(scoreJson);
-        calculateMeetIn2Weeks(scoreJson);
-        scoreJson.setValue(calculateScore());
-
-        return scoreJson;
-    }
-
-    private void calculateNoMeetEver(ScoreJson scoreJson) {
-        if (entryQuestionnaire.getAge() > HIGH_RISK_AGE
-                || entryQuestionnaire.isBelongsToRiskCategory()
-                || entryQuestionnaire.isLivesWithPeopleOfRiskCategory()) {
-
+        if(!shouldMeetEver()) {
+            ScoreJson scoreJson = new ScoreJson();
             scoreJson.setDaysLeftToMeet(NO_MEET_EVER_IDENTIFICATION_NUMBER);
             scoreJson.setNoMeet(true);
+            scoreJson.setValue(0);
+            scoreJson.setColor(DANGER_COLOR);
+            return scoreJson;
+        }else if(!shouldMeetBefore2WeeksPassed()) {
+            ScoreJson scoreJson = new ScoreJson();
+            scoreJson.setDaysLeftToMeet(MAX_DAYS_LEFT_TO_MEET);
+            scoreJson.setNoMeet(true);
+            scoreJson.setValue(0);
+            scoreJson.setColor(DANGER_COLOR);
+            return scoreJson;
+        }else {
+            ScoreJson scoreJson = new ScoreJson();
+            scoreJson.setNoMeet(false);
+            scoreJson.setDaysLeftToMeet(1);
+            scoreJson.setColor("COLOR");
+            scoreJson.setValue(calculateScore());
+            return scoreJson;
         }
+    }
+
+    private boolean shouldMeetEver() {
+        return entryQuestionnaire.getAge() <= HIGH_RISK_AGE
+                && !entryQuestionnaire.isBelongsToRiskCategory()
+                && !entryQuestionnaire.isLivesWithPeopleOfRiskCategory();
 
     }
 
-    private void calculateMeetIn2Weeks(ScoreJson scoreJson) {
-        if (entryQuestionnaire.isHadSymptoms()
-                || entryQuestionnaire.isHasTraveledAbroad()
-                || entryQuestionnaire.isHasMetInfectedPeopleInTheLast2Weeks()) {
-            scoreJson.setDaysLeftToMeet(MAX_DAYS_LEFT_TO_MEET);
-            scoreJson.setNoMeet(true);
-        }
+    private boolean shouldMeetBefore2WeeksPassed() {
+        return !entryQuestionnaire.isHadSymptoms()
+                && !entryQuestionnaire.isHasTraveledAbroad()
+                && !entryQuestionnaire.isHasMetInfectedPeopleInTheLast2Weeks();
     }
 
     private int calculateScore() {
