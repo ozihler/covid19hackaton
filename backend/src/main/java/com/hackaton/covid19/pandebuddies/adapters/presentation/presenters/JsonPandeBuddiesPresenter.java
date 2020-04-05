@@ -47,13 +47,9 @@ public class JsonPandeBuddiesPresenter implements PandeBuddiesPresenter {
     private PandeBuddyJson toPandeBuddyJson(PandeBuddyDocument pandeBuddyDocument) {
         Username username = pandeBuddyDocument.getUsername();
         String value = username.value();
-        PandeBuddyJson pandeBuddyJson = new PandeBuddyJson(value, null, pandeBuddyDocument.getImageUrl(), toJson(pandeBuddyDocument.getScore()));
+        PandeBuddyJson pandeBuddyJson = new PandeBuddyJson(value, null, pandeBuddyDocument.getImageUrl(),  pandeBuddyDocument.getScore() );
         pandeBuddyJson.setEntryQuestionnaire(pandeBuddyDocument.getEntryQuestionnaire());
 
         return pandeBuddyJson;
-    }
-
-    private ScoreJson toJson(Score score) {
-        return new ScoreJson(score.getValue(), score.getColor(), score.getDaysLeftToMeet(), false);
     }
 }

@@ -25,7 +25,7 @@ public class RestCreatedUserPresenter implements CreatedUserPresenter {
                 pandeBuddyDocument.getUsername().value(),
                 null,
                 pandeBuddyDocument.getImageUrl(),
-                toJson(pandeBuddyDocument.getScore())
+                 pandeBuddyDocument.getScore()
         );
 
         pandeBuddyJson.setEntryQuestionnaire(pandeBuddyDocument.getEntryQuestionnaire());

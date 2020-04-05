@@ -1,5 +1,6 @@
 package com.hackaton.covid19.register.application.use_cases;
 
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.register.application.outbound_ports.CreatedUserPresenter;
 import com.hackaton.covid19.register.application.use_cases.inbound_port.RegisterPandeBuddy;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
@@ -30,7 +31,7 @@ public class RegisterPandeBuddyUseCase implements RegisterPandeBuddy {
             PandeBuddyDocument pandeBuddyDocument = toDocument(user);
             output.present(pandeBuddyDocument, true);
         } else {
-            user = new PandeBuddy(username, new PandeBuddies(new ArrayList<PandeBuddy>()), "", new Score());
+            user = new PandeBuddy(username, new PandeBuddies(new ArrayList<PandeBuddy>()), "", new ScoreJson());
             user = storePandeBuddy.storePandeBuddy(user);
             PandeBuddyDocument pandeBuddyDocument = toDocument(user);
             output.present(pandeBuddyDocument, false);

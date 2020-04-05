@@ -2,6 +2,7 @@ package com.hackaton.covid19.shared.domain.entities;
 
 import com.hackaton.covid19.dailyquestionnaire.DailyQuestionnaire;
 import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaire;
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.shared.domain.values.PandeBuddies;
 import com.hackaton.covid19.shared.domain.values.Score;
 import com.hackaton.covid19.shared.domain.values.Username;
@@ -14,11 +15,11 @@ public class PandeBuddy {
     private Username username;
     private PandeBuddies pandeBuddies;
     private String imageUrl;
-    private Score score = new Score();
+    private ScoreJson score = new ScoreJson();
     private EntryQuestionnaire entryQuestionnaire;
     private List<DailyQuestionnaire> dailyQuestionnaires;
 
-    public PandeBuddy(Username username, PandeBuddies pandeBuddies, String imageUrl, Score score) {
+    public PandeBuddy(Username username, PandeBuddies pandeBuddies, String imageUrl, ScoreJson score) {
         this.username = username;
         this.pandeBuddies = pandeBuddies;
         this.imageUrl = imageUrl;
@@ -41,7 +42,7 @@ public class PandeBuddy {
         this.imageUrl = imageUrl;
     }
 
-    public void setScore(Score score) {
+    public void setScore(ScoreJson score) {
         this.score = score;
     }
 
@@ -49,7 +50,7 @@ public class PandeBuddy {
         return imageUrl;
     }
 
-    public Score getScore() {
+    public ScoreJson getScore() {
         return score;
     }
 

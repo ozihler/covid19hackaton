@@ -2,6 +2,7 @@ package com.hackaton.covid19.shared.application.outbound_ports;
 
 import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaire;
 import com.hackaton.covid19.pandebuddies.application.PandeBuddiesDocument;
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.shared.domain.values.Score;
 import com.hackaton.covid19.shared.domain.values.Username;
 
@@ -10,14 +11,14 @@ public class PandeBuddyDocument {
     private Username username;
     private PandeBuddiesDocument pandeBuddies;
     private String imageUrl;
-    private Score score;
+    private ScoreJson score;
     private EntryQuestionnaire entryQuestionnaire;
 
     public PandeBuddyDocument() {
     }
 
 
-    public PandeBuddyDocument(Username username, PandeBuddiesDocument pandeBuddies, String imageUrl, Score score) {
+    public PandeBuddyDocument(Username username, PandeBuddiesDocument pandeBuddies, String imageUrl, ScoreJson score) {
         this.username = username;
         this.pandeBuddies = pandeBuddies;
         this.imageUrl = imageUrl;
@@ -48,11 +49,11 @@ public class PandeBuddyDocument {
         this.imageUrl = imageUrl;
     }
 
-    public Score getScore() {
+    public ScoreJson getScore() {
         return score;
     }
 
-    public void setScore(Score score) {
+    public void setScore(ScoreJson score) {
         this.score = score;
     }
 

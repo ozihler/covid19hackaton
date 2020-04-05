@@ -1,5 +1,6 @@
 package com.hackaton.covid19.shared.adapters.data_access;
 
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.shared.adapters.data_access.exceptions.PandeBuddyNotFoundException;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddies;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
@@ -26,18 +27,18 @@ public class InMemoryPandeBuddyRepository
 
 
         List<PandeBuddy> pandeBuddies = new ArrayList<>();
-        pandeBuddies.add(new PandeBuddy(Username.from("Olly"), new PandeBuddies(List.of()), "avatar1.png", new Score(100, "red", 12)));
-        pandeBuddies.add(new PandeBuddy(Username.from("Monique"), new PandeBuddies(List.of()), "avatar2.png", new Score(200, "red", 11)));
-        pandeBuddies.add(new PandeBuddy(Username.from("Sandro"), new PandeBuddies(List.of()), "avatar3.png", new Score(300, "yellow", 6)));
-        pandeBuddies.add(new PandeBuddy(Username.from("Simona"), new PandeBuddies(List.of()), "avatar4.png", new Score(400, "yellow", 4)));
-        pandeBuddies.add(new PandeBuddy(Username.from("Fabian"), new PandeBuddies(List.of()), "avatar5.png", new Score(500, "green", 0)));
-        pandeBuddies.add(new PandeBuddy(Username.from("Hannah"), new PandeBuddies(List.of()), "avatar6.png", new Score(600, "green", 0)));
+        pandeBuddies.add(new PandeBuddy(Username.from("Olly"), new PandeBuddies(List.of()), "avatar1.png", new ScoreJson(100, "red", 12,true)));
+        pandeBuddies.add(new PandeBuddy(Username.from("Monique"), new PandeBuddies(List.of()), "avatar2.png", new ScoreJson(200, "red", 11,true)));
+        pandeBuddies.add(new PandeBuddy(Username.from("Sandro"), new PandeBuddies(List.of()), "avatar3.png", new ScoreJson(300, "yellow", 6,false)));
+        pandeBuddies.add(new PandeBuddy(Username.from("Simona"), new PandeBuddies(List.of()), "avatar4.png", new ScoreJson(400, "yellow", 4,false)));
+        pandeBuddies.add(new PandeBuddy(Username.from("Fabian"), new PandeBuddies(List.of()), "avatar5.png", new ScoreJson(500, "green", 0,false)));
+        pandeBuddies.add(new PandeBuddy(Username.from("Hannah"), new PandeBuddies(List.of()), "avatar6.png", new ScoreJson(600, "green", 0,false)));
 
-        PandeBuddy alina = new PandeBuddy(Username.from("Alina"), new PandeBuddies(pandeBuddies), "avatar7.png", new Score(500, "yellow", 7));
+        PandeBuddy alina = new PandeBuddy(Username.from("Alina"), new PandeBuddies(pandeBuddies), "avatar7.png", new ScoreJson(500, "yellow", 7,false));
 
         List<PandeBuddy> buddiesOfMonique = new ArrayList<>();
-        PandeBuddy monique = new PandeBuddy(Username.from("Monique"), new PandeBuddies(buddiesOfMonique), "avatar2.png", new Score(200, "red", 11));
-        PandeBuddy olly = new PandeBuddy(Username.from("Olly"), new PandeBuddies(List.of(monique)), "avatar1.png", new Score(100, "red", 12));
+        PandeBuddy monique = new PandeBuddy(Username.from("Monique"), new PandeBuddies(buddiesOfMonique), "avatar2.png", new ScoreJson(200, "red", 11,true));
+        PandeBuddy olly = new PandeBuddy(Username.from("Olly"), new PandeBuddies(List.of(monique)), "avatar1.png", new ScoreJson(100, "red", 12,true));
         buddiesOfMonique.add(olly);
 
         this.pandeBuddies.put(alina.getUsername(), alina);

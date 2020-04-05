@@ -29,6 +29,10 @@ public class EntryQuestionnaireService {
         repository.storePandeBuddy(pandeBuddy);
 
         CalculatedScore calculatedScore = new CalculatedScore(entryQuestionnaire);
-        return calculatedScore.value();
+        ScoreJson scoreValue = calculatedScore.value();
+
+        pandeBuddy.setScore(scoreValue);
+
+        return scoreValue;
     }
 }
