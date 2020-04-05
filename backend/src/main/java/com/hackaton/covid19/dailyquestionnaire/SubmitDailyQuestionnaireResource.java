@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class SubmitDailyQuestionnaireResource {
 
     private DailyQuestionnaireService dailyQuestionnaireService;
-    private InMemoryPandeBuddyRepository repository;
 
     @Autowired
     public SubmitDailyQuestionnaireResource(DailyQuestionnaireService dailyQuestionnaireService ) {
         this.dailyQuestionnaireService = dailyQuestionnaireService;
-        this.repository = repository;
     }
 
     @PostMapping("dailyQuestionnaire")
