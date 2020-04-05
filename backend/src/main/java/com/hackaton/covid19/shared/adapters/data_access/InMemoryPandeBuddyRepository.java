@@ -7,7 +7,6 @@ import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
 import com.hackaton.covid19.shared.application.outbound_ports.StorePandeBuddy;
 import com.hackaton.covid19.shared.domain.entities.PandeBuddy;
 import com.hackaton.covid19.shared.domain.values.PandeBuddies;
-import com.hackaton.covid19.shared.domain.values.Score;
 import com.hackaton.covid19.shared.domain.values.Username;
 import org.springframework.stereotype.Repository;
 
@@ -77,11 +76,14 @@ public class InMemoryPandeBuddyRepository
     }
 
     @Override
-    public PandeBuddies searchPandeBuddies(Username usernameFragment){
+    public PandeBuddies searchPandeBuddies(Username pandename, Username buddyFragment){
         Set<Username> usernames = pandeBuddies.keySet();
+        List<PandeBuddy> pandeBuddiesOfPandeUser = pandeBuddies.get(pandename).getPandeBuddies().getPandeBuddies();
         List<PandeBuddy> pandeBuddiesProposalsList = new ArrayList<>();
         for (Username username:usernames) {
-            if(username.value().contains(usernameFragment.value())){
+            if(username.value().contains(buddyFragment.value())
+            && !username.value().equalsIgnoreCase(pandename.value())
+            && !pandeBuddiesOfPandeUser.contains(pandeBuddies.get(username))){
                 pandeBuddiesProposalsList.add(pandeBuddies.get(username));
             }
         }

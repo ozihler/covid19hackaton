@@ -6,5 +6,5 @@ import com.hackaton.covid19.pandebuddies.application.outbound_ports.PandeBuddies
 public interface PandeBuddiesInboundPort {
     void invokeWith(Username username, PandeBuddiesPresenter output);
     void invokeWith(Username newBuddyUsername, Username username, PandeBuddiesPresenter output);
-    void searchWith(Username username, PandeBuddiesPresenter output);
+    void searchWith(Username pandename, Username buddyname, PandeBuddiesPresenter output);
 }

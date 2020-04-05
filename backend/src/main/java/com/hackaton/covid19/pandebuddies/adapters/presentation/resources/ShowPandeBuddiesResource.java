@@ -23,10 +23,10 @@ public class ShowPandeBuddiesResource {
     }
 
     @GetMapping(
-            path = "/pandebuddies/{pandeName}",
+            path = "/pandebuddies/{buddyName}",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public ResponseEntity<PandeBuddiesJson> searchPandeBuddies(@PathVariable("pandeName") String pandeName) {
-        return this.showPandeBuddiesController.searchPandeBuddies(pandeName);
+    public ResponseEntity<PandeBuddiesJson> searchPandeBuddies(@RequestHeader("pandeName") String pandeName, @PathVariable("buddyName") String buddyName) {
+        return this.showPandeBuddiesController.searchPandeBuddies(pandeName, buddyName);
     }
 }

@@ -40,8 +40,8 @@ public class PandeBuddiesUseCase implements PandeBuddiesInboundPort {
     }
 
     @Override
-    public void searchWith(Username username, PandeBuddiesPresenter output) {
-        PandeBuddies pandeBuddies =  fetchPandeBuddies.searchPandeBuddies(username);
+    public void searchWith(Username pandename, Username buddyname, PandeBuddiesPresenter output) {
+        PandeBuddies pandeBuddies =  fetchPandeBuddies.searchPandeBuddies(pandename, buddyname);
         PandeBuddiesDocument pandeBuddiesDocument = toDocument(pandeBuddies);
         output.present(pandeBuddiesDocument);
     }

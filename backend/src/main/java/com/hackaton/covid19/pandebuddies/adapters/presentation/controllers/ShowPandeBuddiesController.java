@@ -28,11 +28,12 @@ public class ShowPandeBuddiesController {
         return output.getResponsePandeBuddies();
     }
 
-    public ResponseEntity<PandeBuddiesJson> searchPandeBuddies(String pandeName) {
-        Username username = Username.from(pandeName);
+    public ResponseEntity<PandeBuddiesJson> searchPandeBuddies(String pandeName, String buddyName) {
+        Username pandename = Username.from(pandeName);
+        Username buddyname = Username.from(buddyName);
         JsonPandeBuddiesPresenter output = new JsonPandeBuddiesPresenter();
 
-        pandeBuddies.searchWith(username, output);
+        pandeBuddies.searchWith(pandename, buddyname, output);
 
         return output.getResponsePandeBuddies();
     }
