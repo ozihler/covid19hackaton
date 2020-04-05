@@ -33,7 +33,7 @@ public class EntryQuestionnaireScore {
         } else {
             ScoreJson scoreJson = new ScoreJson();
             scoreJson.setNoMeet(false);
-            scoreJson.setDaysLeftToMeet(1);
+            scoreJson.setDaysLeftToMeet(0);
             int value = calculateScore();
             scoreJson.setValue(value);
             scoreJson.setColor(new QuestionnaireHelper().getColor(value));

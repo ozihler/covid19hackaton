@@ -16,8 +16,8 @@ public class CalculatedScoreDaily {
 
     public ScoreJson value() {
         ScoreJson entryScoreJson = new CalculatedScore(pandeBuddy.getEntryQuestionnaire()).value();
-        ScoreJson dailyScoreJson = new ScoreJson(0, QuestionnaireHelper.SAFE_COLOR, 1, false);
-        ScoreJson finalScoreJson = new ScoreJson(0, QuestionnaireHelper.SAFE_COLOR, 1, false);
+        ScoreJson dailyScoreJson = new ScoreJson(0, QuestionnaireHelper.SAFE_COLOR, 0, false);
+        ScoreJson finalScoreJson = new ScoreJson(0, QuestionnaireHelper.SAFE_COLOR, 0, false);
 
         List<DailyQuestionnaire> dailyQuestionnaires = pandeBuddy.getDailyQuestionnaires();
 

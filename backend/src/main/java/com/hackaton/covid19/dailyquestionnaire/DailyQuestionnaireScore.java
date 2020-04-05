@@ -15,7 +15,7 @@ public class DailyQuestionnaireScore {
     }
 
     ScoreJson score() {
-        ScoreJson scoreJson = new ScoreJson(0, QuestionnaireHelper.SAFE_COLOR, 1, false);
+        ScoreJson scoreJson = new ScoreJson(0, QuestionnaireHelper.SAFE_COLOR, 0, false);
         calculateMeetInXDays(scoreJson);
         if(!scoreJson.isNoMeet()) {
             int value = calculateScore();
@@ -36,7 +36,7 @@ public class DailyQuestionnaireScore {
             if(then != null){
                daysLeftToMeet = QuestionnaireHelper.MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
             }
-            if(daysLeftToMeet > 1){
+            if(daysLeftToMeet > 0){
                 scoreJson.setDaysLeftToMeet(daysLeftToMeet);
                 scoreJson.setNoMeet(true);
                 scoreJson.setColor(QuestionnaireHelper.DANGER_COLOR);
