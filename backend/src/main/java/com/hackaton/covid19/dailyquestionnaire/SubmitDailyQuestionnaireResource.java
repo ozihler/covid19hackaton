@@ -1,9 +1,6 @@
 package com.hackaton.covid19.dailyquestionnaire;
 
-import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaireService;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
-import com.hackaton.covid19.shared.adapters.data_access.InMemoryPandeBuddyRepository;
-import com.hackaton.covid19.shared.domain.values.Score;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

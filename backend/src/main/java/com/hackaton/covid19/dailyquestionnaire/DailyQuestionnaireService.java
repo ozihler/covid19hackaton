@@ -1,11 +1,11 @@
 package com.hackaton.covid19.dailyquestionnaire;
 
+import com.hackaton.covid19.entryquestionnaire.CalculatedScore;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.shared.adapters.data_access.InMemoryPandeBuddyRepository;
 import com.hackaton.covid19.shared.adapters.data_access.exceptions.PandeBuddyNotFoundException;
 import com.hackaton.covid19.shared.domain.entities.PandeBuddy;
 import com.hackaton.covid19.shared.domain.values.Username;
-import org.h2.engine.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,10 +27,13 @@ public class DailyQuestionnaireService {
             throw new PandeBuddyNotFoundException(username);
         }
 
-        List<DailyQuestionnaire> dailyQuestionnaires = repository.withUsername(username).get().getDailyQuestionnaires();
+        PandeBuddy pandeBuddy = repository.withUsername(username).get();
+        List<DailyQuestionnaire> dailyQuestionnaires = pandeBuddy.getDailyQuestionnaires();
         dailyQuestionnaires.add(dailyQuestionnaire);
         CalculatedScoreDaily calculatedScore = new CalculatedScoreDaily(repository.withUsername(username).get());
-        return calculatedScore.value();
+        ScoreJson scoreValue = calculatedScore.value();
+        pandeBuddy.setScore(scoreValue);
+        return scoreValue;
     }
 
     public ScoreJson getScoreFor(String pandeName) {

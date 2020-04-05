@@ -3,6 +3,7 @@ package com.hackaton.covid19.dailyquestionnaire;
 import com.hackaton.covid19.entryquestionnaire.CalculatedScore;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.shared.domain.entities.PandeBuddy;
+import com.hackaton.covid19.shared_questionnaire.QuestionnaireHelper;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class CalculatedScoreDaily {
 
     public ScoreJson value() {
         ScoreJson entryScoreJson = new CalculatedScore(pandeBuddy.getEntryQuestionnaire()).value();
-        ScoreJson dailyScoreJson = new ScoreJson(0, "COLOR", 1, false);
-        ScoreJson finalScoreJson = new ScoreJson(0, "COLOR", 1, false);
+        ScoreJson dailyScoreJson = new ScoreJson(0, QuestionnaireHelper.SAFE_COLOR, 1, false);
+        ScoreJson finalScoreJson = new ScoreJson(0, QuestionnaireHelper.SAFE_COLOR, 1, false);
 
         List<DailyQuestionnaire> dailyQuestionnaires = pandeBuddy.getDailyQuestionnaires();
 
@@ -31,11 +32,13 @@ public class CalculatedScoreDaily {
         }
 
         if(entryScoreJson.isNoMeet() || dailyScoreJson.isNoMeet()){
-            finalScoreJson.setColor("red");
+            finalScoreJson.setColor(QuestionnaireHelper.DANGER_COLOR);
             finalScoreJson.setDaysLeftToMeet(Math.max(entryScoreJson.getDaysLeftToMeet(),dailyScoreJson.getDaysLeftToMeet()));
             finalScoreJson.setNoMeet(true);
         } else {
-            finalScoreJson.setValue(entryScoreJson.getValue() + dailyScoreJson.getValue());
+            int value = entryScoreJson.getValue() + dailyScoreJson.getValue();
+            finalScoreJson.setValue(value);
+            finalScoreJson.setColor(new QuestionnaireHelper().getColor(value));
         }
         return finalScoreJson;
     }
