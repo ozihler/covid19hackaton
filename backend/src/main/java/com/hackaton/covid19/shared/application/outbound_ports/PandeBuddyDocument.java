@@ -13,6 +13,7 @@ public class PandeBuddyDocument {
     private String imageUrl;
     private ScoreJson score;
     private EntryQuestionnaire entryQuestionnaire;
+    private boolean panikButtonFlag;
 
     public PandeBuddyDocument() {
     }
@@ -64,5 +65,13 @@ public class PandeBuddyDocument {
 
     public EntryQuestionnaire getEntryQuestionnaire() {
         return entryQuestionnaire;
+    }
+
+    public void setPanikButtonFlag(boolean panikButtonFlag) {
+        this.panikButtonFlag = panikButtonFlag;
+    }
+
+    public boolean isPanikButtonFlag() {
+        return panikButtonFlag;
     }
 }

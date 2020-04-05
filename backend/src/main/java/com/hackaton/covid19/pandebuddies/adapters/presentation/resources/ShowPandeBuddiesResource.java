@@ -29,4 +29,5 @@ public class ShowPandeBuddiesResource {
     public ResponseEntity<PandeBuddiesJson> searchPandeBuddies(@RequestHeader("pandeName") String pandeName, @PathVariable("buddyName") String buddyName) {
         return this.showPandeBuddiesController.searchPandeBuddies(pandeName, buddyName);
     }
+
 }

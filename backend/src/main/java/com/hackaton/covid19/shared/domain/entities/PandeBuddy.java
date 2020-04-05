@@ -18,6 +18,19 @@ public class PandeBuddy {
     private ScoreJson score = new ScoreJson();
     private EntryQuestionnaire entryQuestionnaire;
     private List<DailyQuestionnaire> dailyQuestionnaires;
+    private boolean panikButtonFlag;
+
+    public void setDailyQuestionnaires(List<DailyQuestionnaire> dailyQuestionnaires) {
+        this.dailyQuestionnaires = dailyQuestionnaires;
+    }
+
+    public boolean isPanikButtonFlag() {
+        return panikButtonFlag;
+    }
+
+    public void setPanikButtonFlag(boolean panikButtonFlag) {
+        this.panikButtonFlag = panikButtonFlag;
+    }
 
     public PandeBuddy(Username username, PandeBuddies pandeBuddies, String imageUrl, ScoreJson score) {
         this.username = username;

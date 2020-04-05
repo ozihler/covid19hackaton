@@ -13,7 +13,19 @@ public class PandeBuddyJson {
     private String imageUrl;
     private ScoreJson score = new ScoreJson();
     private EntryQuestionnaire entryQuestionnaire;
+    private boolean panikButtonFlag;
 
+    public EntryQuestionnaire getEntryQuestionnaire() {
+        return entryQuestionnaire;
+    }
+
+    public boolean isPanikButtonFlag() {
+        return panikButtonFlag;
+    }
+
+    public void setPanikButtonFlag(boolean panikButtonFlag) {
+        this.panikButtonFlag = panikButtonFlag;
+    }
 
     public PandeBuddyJson() {
     }

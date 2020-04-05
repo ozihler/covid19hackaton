@@ -22,4 +22,12 @@ public class AddToPandeBuddiesResource {
     public ResponseEntity<PandeBuddyJson> addPandeBuddy(@RequestBody UsernameJson requestUsername, @PathVariable("pandeName") String pandeName){
         return this.addedToBuddiesController.addPandeBuddy(requestUsername, pandeName);
     }
+
+
+    @PutMapping(path = "/panikbutton")
+    public ResponseEntity pressPanicButton(@RequestHeader("pandeName") String pandeName) {
+        this.addedToBuddiesController.panikButtonPressedOn(pandeName);
+
+        return ResponseEntity.ok().build();
+    }
 }

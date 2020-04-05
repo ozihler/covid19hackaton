@@ -1,13 +1,11 @@
 package com.hackaton.covid19.pandebuddies.adapters.presentation.presenters;
 
-import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
-import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
-import com.hackaton.covid19.shared.application.outbound_ports.PandeBuddyDocument;
-import com.hackaton.covid19.shared.domain.values.Score;
-import com.hackaton.covid19.shared.domain.values.Username;
 import com.hackaton.covid19.pandebuddies.adapters.presentation.viewmodels.PandeBuddiesJson;
 import com.hackaton.covid19.pandebuddies.application.PandeBuddiesDocument;
 import com.hackaton.covid19.pandebuddies.application.outbound_ports.PandeBuddiesPresenter;
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
+import com.hackaton.covid19.shared.application.outbound_ports.PandeBuddyDocument;
+import com.hackaton.covid19.shared.domain.values.Username;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -15,9 +13,13 @@ import java.util.stream.Collectors;
 
 public class JsonPandeBuddiesPresenter implements PandeBuddiesPresenter {
     private ResponseEntity<PandeBuddiesJson> responsePandeBuddies;
-    public ResponseEntity<PandeBuddiesJson> getResponsePandeBuddies() { return this.responsePandeBuddies; }
+
+    public ResponseEntity<PandeBuddiesJson> getResponsePandeBuddies() {
+        return this.responsePandeBuddies;
+    }
 
     private ResponseEntity<PandeBuddyJson> responsePandeBuddy;
+
     public ResponseEntity<PandeBuddyJson> getResponsePandeBuddy() {
         return this.responsePandeBuddy;
     }
@@ -47,8 +49,9 @@ public class JsonPandeBuddiesPresenter implements PandeBuddiesPresenter {
     private PandeBuddyJson toPandeBuddyJson(PandeBuddyDocument pandeBuddyDocument) {
         Username username = pandeBuddyDocument.getUsername();
         String value = username.value();
-        PandeBuddyJson pandeBuddyJson = new PandeBuddyJson(value, null, pandeBuddyDocument.getImageUrl(),  pandeBuddyDocument.getScore() );
+        PandeBuddyJson pandeBuddyJson = new PandeBuddyJson(value, null, pandeBuddyDocument.getImageUrl(), pandeBuddyDocument.getScore());
         pandeBuddyJson.setEntryQuestionnaire(pandeBuddyDocument.getEntryQuestionnaire());
+        pandeBuddyJson.setPanikButtonFlag(pandeBuddyDocument.isPanikButtonFlag());
 
         return pandeBuddyJson;
     }
