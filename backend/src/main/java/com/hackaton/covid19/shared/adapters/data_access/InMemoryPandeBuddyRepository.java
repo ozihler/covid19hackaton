@@ -1,5 +1,6 @@
 package com.hackaton.covid19.shared.adapters.data_access;
 
+import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaire;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.shared.adapters.data_access.exceptions.PandeBuddyNotFoundException;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddies;
@@ -39,7 +40,27 @@ public class InMemoryPandeBuddyRepository
         this.pandeBuddies.put(Username.from("Mikmak"), new PandeBuddy(Username.from("Mikmak"), new PandeBuddies(new ArrayList<>()), "avatar5.png", new ScoreJson(500, "green", 0, false)));
         this.pandeBuddies.put(Username.from("Letiko"), new PandeBuddy(Username.from("Letiko"), new PandeBuddies(new ArrayList<>()), "avatar3.png", new ScoreJson(600, "green", 0, false)));
         this.pandeBuddies.put(Username.from("Breuler"), new PandeBuddy(Username.from("Breuler"), new PandeBuddies(new ArrayList<>()), "avatar6.png", new ScoreJson(600, "green", 0, false)));
+
+        Random random = new Random();
+        this.pandeBuddies.values()
+                .forEach(o -> {
+                            o.setEntryQuestionnaire(new EntryQuestionnaire(
+                                    "male",
+                                    random.nextInt(100),
+                                    random.nextBoolean(),
+                                    random.nextBoolean(),
+                                    random.nextBoolean(),
+                                    random.nextInt(20),
+                                    random.nextBoolean(),
+                                    random.nextInt(20),
+                                    random.nextBoolean(),
+                                    random.nextInt(20),
+                                    new ArrayList<>(Set.of("Wear Mask"))
+                            ));
+                        }
+                );
     }
+
 
     @Override
     public Optional<PandeBuddy> withUsername(Username username) {

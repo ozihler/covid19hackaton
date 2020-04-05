@@ -20,7 +20,16 @@ public class EntryQuestionnaire {
     public EntryQuestionnaire() {
     }
 
-    public EntryQuestionnaire(String gender, int age, boolean belongsToRiskCategory, boolean hadSymptoms, boolean hasTraveledAbroad, int numberOfPeopleInHousehold, boolean livesWithPeopleOfRiskCategory, int numberOfPeopleMetInTheLast2Weeks, boolean hasMetInfectedPeopleInTheLast2Weeks, int daysSinceLastWentOut, List<String> regularPreventiveMeasures) {
+    public EntryQuestionnaire(String gender, int age,
+                              boolean belongsToRiskCategory,
+                              boolean hadSymptoms,
+                              boolean hasTraveledAbroad,
+                              int numberOfPeopleInHousehold,
+                              boolean livesWithPeopleOfRiskCategory,
+                              int numberOfPeopleMetInTheLast2Weeks,
+                              boolean hasMetInfectedPeopleInTheLast2Weeks,
+                              int daysSinceLastWentOut,
+                              List<String> regularPreventiveMeasures) {
         this.date = LocalDate.now();
         this.gender = gender;
         this.age = age;
