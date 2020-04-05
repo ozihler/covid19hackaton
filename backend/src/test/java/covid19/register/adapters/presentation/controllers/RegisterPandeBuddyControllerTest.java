@@ -1,6 +1,7 @@
 package covid19.register.adapters.presentation.controllers;
 
 
+import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaireService;
 import com.hackaton.covid19.register.adapters.presentation.controllers.RegisterPandeBuddyController;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.PandeBuddyJson;
 import com.hackaton.covid19.shared.adapters.presentation.viewmodels.UsernameJson;
@@ -16,7 +17,7 @@ class RegisterPandeBuddyControllerTest {
 
     @Test
     void test() {
-        var repo = new InMemoryPandeBuddyRepository();
+        var repo = new InMemoryPandeBuddyRepository(null);
         var controller = new RegisterPandeBuddyController(repo, repo);
         ResponseEntity<PandeBuddyJson> response = controller.registerUserWith(new UsernameJson("Olly"));
 
@@ -28,7 +29,7 @@ class RegisterPandeBuddyControllerTest {
 
     @Test
     void testException() {
-        var repo = new InMemoryPandeBuddyRepository();
+        var repo = new InMemoryPandeBuddyRepository(null);
         var controller = new RegisterPandeBuddyController(repo, repo);
         controller.registerUserWith(new UsernameJson("Olly"));
 
