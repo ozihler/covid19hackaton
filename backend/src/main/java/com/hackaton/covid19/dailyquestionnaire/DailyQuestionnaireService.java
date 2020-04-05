@@ -42,4 +42,5 @@ public class DailyQuestionnaireService {
         PandeBuddy pandeBuddy = repository.withUsername(username).get();
         return pandeBuddy.getScore();
     }
+
 }

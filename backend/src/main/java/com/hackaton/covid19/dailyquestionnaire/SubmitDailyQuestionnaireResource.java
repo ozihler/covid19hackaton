@@ -27,7 +27,7 @@ public class SubmitDailyQuestionnaireResource {
         return ResponseEntity.ok(score);
     }
 
-    @GetMapping("curentScore")
+    @GetMapping("currentScore")
     public ResponseEntity<ScoreJson> getCurrentScore(@RequestHeader("pandeName") String pandeName) {
         ScoreJson score = dailyQuestionnaireService.getScoreFor(pandeName);
         return ResponseEntity.ok(score);
