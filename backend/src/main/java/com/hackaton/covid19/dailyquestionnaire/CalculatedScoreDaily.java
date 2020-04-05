@@ -35,8 +35,7 @@ public class CalculatedScoreDaily {
             finalScoreJson.setColor("red");
             finalScoreJson.setDaysLeftToMeet(Math.max(entryScoreJson.getDaysLeftToMeet(),dailyScoreJson.getDaysLeftToMeet()));
             finalScoreJson.setNoMeet(true);
-        }
-        else {
+        } else {
             finalScoreJson.setValue(entryScoreJson.getValue() + dailyScoreJson.getValue());
         }
         return finalScoreJson;

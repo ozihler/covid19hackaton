@@ -19,38 +19,42 @@ public class EntryQuestionnaireScore {
     }
 
     ScoreJson score() {
-        if(!shouldMeetEver()) {
+        if (!shouldMeetEver()) {
             ScoreJson scoreJson = new ScoreJson();
             scoreJson.setDaysLeftToMeet(NO_MEET_EVER_IDENTIFICATION_NUMBER);
             scoreJson.setNoMeet(true);
             scoreJson.setValue(0);
             scoreJson.setColor(DANGER_COLOR);
             return scoreJson;
-        }else if(!shouldMeetBefore2WeeksPassed() && daysLeftToMeet()!=1) {
+        } else if (!shouldMeetBefore2WeeksPassed() && daysLeftToMeet() != 1) {
             ScoreJson scoreJson = new ScoreJson();
             scoreJson.setDaysLeftToMeet(daysLeftToMeet());
             scoreJson.setNoMeet(true);
             scoreJson.setValue(0);
             scoreJson.setColor(DANGER_COLOR);
             return scoreJson;
-        }else {
+        } else {
             ScoreJson scoreJson = new ScoreJson();
             scoreJson.setNoMeet(false);
             scoreJson.setDaysLeftToMeet(1);
-            scoreJson.setColor("COLOR");
-            scoreJson.setValue(calculateScore());
+            int value = calculateScore();
+            scoreJson.setValue(value);
+
+            if (value < CalculatedScore.THRESHOLD_SCORE) {
+                scoreJson.setColor("yellow");
+            } else {
+                scoreJson.setColor("green");
+            }
+
             return scoreJson;
         }
     }
 
-    private int daysLeftToMeet(){
+    private int daysLeftToMeet() {
         LocalDate now = LocalDate.now();
         LocalDate then = entryQuestionnaire.getDate();
         int daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
-        if(daysLeftToMeet > 1){
-            return daysLeftToMeet;
-        }
-        return 1;
+        return Math.max(daysLeftToMeet, 1);
     }
 
     private boolean shouldMeetEver() {
