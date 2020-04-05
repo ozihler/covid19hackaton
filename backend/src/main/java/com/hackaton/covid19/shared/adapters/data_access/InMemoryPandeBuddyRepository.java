@@ -59,7 +59,7 @@ public class InMemoryPandeBuddyRepository
                             random.nextInt(20),
                             random.nextBoolean(),
                             random.nextInt(20),
-                            new ArrayList<>(Set.of("Wear Mask"))
+                            new ArrayList<>(Set.of("Wear a mask when going out"))
                     );
                     o.setEntryQuestionnaire(entryQuestionnaire);
                     storePandeBuddy(o);
