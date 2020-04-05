@@ -12,6 +12,7 @@ import com.hackaton.covid19.shared.adapters.presentation.viewmodels.UsernameJson
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
 import com.hackaton.covid19.shared.domain.entities.PandeBuddy;
 import com.hackaton.covid19.shared.domain.values.Username;
+import com.hackaton.covid19.shared_questionnaire.QuestionnaireHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -45,6 +46,11 @@ public class AddPandeBuddiesController {
 
         PandeBuddy pandeBuddy = repository.withUsername(username).get();
         pandeBuddy.setPanikButtonFlag(true);
+        pandeBuddy.getScore().setColor(QuestionnaireHelper.DANGER_COLOR);
+        pandeBuddy.getScore().setValue(0);
+        pandeBuddy.getScore().setNoMeet(true);
+        pandeBuddy.getScore().setDaysLeftToMeet(QuestionnaireHelper.MAX_DAYS_LEFT_TO_MEET);
+
         repository.storePandeBuddy(pandeBuddy);
     }
 }
