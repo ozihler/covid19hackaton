@@ -1,17 +1,12 @@
 package com.hackaton.covid19.dailyquestionnaire;
 
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
+import com.hackaton.covid19.shared_questionnaire.QuestionnaireHelper;
 
 import java.time.LocalDate;
 import java.time.Period;
 
 public class DailyQuestionnaireScore {
-
-    public static final int MAX_DAYS_LEFT_TO_MEET = 14;
-    public static final String DANGER_COLOR = "red";
-    public static final String CAUTION_COLOR = "yellow";
-    public static final String SAFE_COLOR = "green";
-    public static int THRESHOLD_SCORE = 1000;
 
     private DailyQuestionnaire dailyQuestionnaire;
 
@@ -20,14 +15,12 @@ public class DailyQuestionnaireScore {
     }
 
     ScoreJson score() {
-        ScoreJson scoreJson = new ScoreJson(0, SAFE_COLOR, 1, false);
+        ScoreJson scoreJson = new ScoreJson(0, QuestionnaireHelper.SAFE_COLOR, 1, false);
         calculateMeetInXDays(scoreJson);
         if(!scoreJson.isNoMeet()) {
             int value = calculateScore();
             scoreJson.setValue(value);
-            if (value < THRESHOLD_SCORE) {
-                scoreJson.setColor(CAUTION_COLOR);
-            }
+            scoreJson.setColor(new QuestionnaireHelper().getColor(value));
         }
         return scoreJson;
     }
@@ -39,14 +32,14 @@ public class DailyQuestionnaireScore {
                 || dailyQuestionnaire.getMetInfectedPeople().contains("Take care of sick people")) {
             LocalDate now = LocalDate.now();
             LocalDate then = dailyQuestionnaire.getDate();
-            int daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET;
+            int daysLeftToMeet = QuestionnaireHelper.MAX_DAYS_LEFT_TO_MEET;
             if(then != null){
-               daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
+               daysLeftToMeet = QuestionnaireHelper.MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
             }
             if(daysLeftToMeet > 1){
                 scoreJson.setDaysLeftToMeet(daysLeftToMeet);
                 scoreJson.setNoMeet(true);
-                scoreJson.setColor(DANGER_COLOR);
+                scoreJson.setColor(QuestionnaireHelper.DANGER_COLOR);
             }
         }
     }

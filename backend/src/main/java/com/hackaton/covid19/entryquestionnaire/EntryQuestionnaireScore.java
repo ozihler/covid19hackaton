@@ -1,19 +1,13 @@
 package com.hackaton.covid19.entryquestionnaire;
 
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
+import com.hackaton.covid19.shared_questionnaire.QuestionnaireHelper;
 import org.apache.logging.log4j.util.Strings;
 
 import java.time.LocalDate;
 import java.time.Period;
 
 public class EntryQuestionnaireScore {
-    public static final int NO_MEET_EVER_IDENTIFICATION_NUMBER = -1;
-    public static final int HIGH_RISK_AGE = 65;
-    public static final int MAX_DAYS_LEFT_TO_MEET = 14;
-    public static final String DANGER_COLOR = "red";
-    public static final String CAUTION_COLOR = "yellow";
-    public static final String SAFE_COLOR = "green";
-    public static int THRESHOLD_SCORE = 1000;
 
     private EntryQuestionnaire entryQuestionnaire;
 
@@ -24,17 +18,17 @@ public class EntryQuestionnaireScore {
     ScoreJson score() {
         if (!shouldMeetEver()) {
             ScoreJson scoreJson = new ScoreJson();
-            scoreJson.setDaysLeftToMeet(NO_MEET_EVER_IDENTIFICATION_NUMBER);
+            scoreJson.setDaysLeftToMeet(QuestionnaireHelper.NO_MEET_EVER_IDENTIFICATION_NUMBER);
             scoreJson.setNoMeet(true);
             scoreJson.setValue(0);
-            scoreJson.setColor(DANGER_COLOR);
+            scoreJson.setColor(QuestionnaireHelper.DANGER_COLOR);
             return scoreJson;
         } else if (!shouldMeetBefore2WeeksPassed() && daysLeftToMeet() != 1) {
             ScoreJson scoreJson = new ScoreJson();
             scoreJson.setDaysLeftToMeet(daysLeftToMeet());
             scoreJson.setNoMeet(true);
             scoreJson.setValue(0);
-            scoreJson.setColor(DANGER_COLOR);
+            scoreJson.setColor(QuestionnaireHelper.DANGER_COLOR);
             return scoreJson;
         } else {
             ScoreJson scoreJson = new ScoreJson();
@@ -42,13 +36,7 @@ public class EntryQuestionnaireScore {
             scoreJson.setDaysLeftToMeet(1);
             int value = calculateScore();
             scoreJson.setValue(value);
-
-            if (value < THRESHOLD_SCORE) {
-                scoreJson.setColor(CAUTION_COLOR);
-            } else {
-                scoreJson.setColor(SAFE_COLOR);
-            }
-
+            scoreJson.setColor(new QuestionnaireHelper().getColor(value));
             return scoreJson;
         }
     }
@@ -56,15 +44,15 @@ public class EntryQuestionnaireScore {
     private int daysLeftToMeet() {
         LocalDate now = LocalDate.now();
         LocalDate then = entryQuestionnaire.getDate();
-        int daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET;
+        int daysLeftToMeet = QuestionnaireHelper.MAX_DAYS_LEFT_TO_MEET;
         if(then != null){
-            daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
+            daysLeftToMeet = QuestionnaireHelper.MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
         }
         return Math.max(daysLeftToMeet, 1);
     }
 
     private boolean shouldMeetEver() {
-        return entryQuestionnaire.getAge() <= HIGH_RISK_AGE
+        return entryQuestionnaire.getAge() <= QuestionnaireHelper.HIGH_RISK_AGE
                 && !entryQuestionnaire.isBelongsToRiskCategory()
                 && !entryQuestionnaire.isLivesWithPeopleOfRiskCategory();
 
