@@ -29,7 +29,7 @@ public class DailyQuestionnaireScore {
         if (dailyQuestionnaire.isSymptoms()
                 || dailyQuestionnaire.getTransportation().contains("Travel abroad")
                 || dailyQuestionnaire.getMetInfectedPeople().contains("Infected people")
-                || dailyQuestionnaire.getMetInfectedPeople().contains("Take care of sick people")) {
+                || dailyQuestionnaire.getMetInfectedPeople().contains("People taking care of sick people")) {
             LocalDate now = LocalDate.now();
             LocalDate then = dailyQuestionnaire.getDate();
             int daysLeftToMeet = QuestionnaireHelper.MAX_DAYS_LEFT_TO_MEET;
@@ -47,15 +47,19 @@ public class DailyQuestionnaireScore {
     private int calculateScore() {
         int scoreValue = 0;
 
+        if (!dailyQuestionnaire.isSymptoms()){
+            scoreValue += 200;
+        }
+
         for (String preventiveMeasure:dailyQuestionnaire.getPreventiveMeasuresPerformed()) {
-            if ("Wash hands with soap / use desinfection".equalsIgnoreCase(preventiveMeasure)) {
+            if ("Wash hands with soap or use desinfection".equalsIgnoreCase(preventiveMeasure)) {
                 scoreValue += 200;
             }
-            if ("Wear a mask".equalsIgnoreCase(preventiveMeasure)){
+            if ("Wear a mask when going out".equalsIgnoreCase(preventiveMeasure)){
                 scoreValue += 100;
             }
-            if ("Shake hands / hug / kiss".equalsIgnoreCase(preventiveMeasure)){
-                scoreValue -= 200;
+            if ("Avoiding handshakes / kisses / hugs".equalsIgnoreCase(preventiveMeasure)){
+                scoreValue += 200;
             }
             if ("Keep distance from other people".equalsIgnoreCase(preventiveMeasure)){
                 scoreValue += 300;
@@ -63,7 +67,7 @@ public class DailyQuestionnaireScore {
         }
 
         for (String placeVisited:dailyQuestionnaire.getPlacesVisited()){
-            if("Stay at home".equalsIgnoreCase(placeVisited)){
+            if("Stayed at home".equalsIgnoreCase(placeVisited)){
                 scoreValue += 300;
             }
             if ("Low risk places".equalsIgnoreCase(placeVisited)){
@@ -92,7 +96,11 @@ public class DailyQuestionnaireScore {
             }
         }
 
-        scoreValue -= 100*dailyQuestionnaire.getPeopleMet();
+        if(dailyQuestionnaire.getPeopleMet() == 0){
+            scoreValue += 200;
+        } else {
+            scoreValue -= 100*dailyQuestionnaire.getPeopleMet();
+        }
 
         for (String infectedPeople : dailyQuestionnaire.getMetInfectedPeople()){
             if ("Risk categories".equalsIgnoreCase(infectedPeople)){
