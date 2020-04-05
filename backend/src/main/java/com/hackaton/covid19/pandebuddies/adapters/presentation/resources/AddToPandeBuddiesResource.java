@@ -24,7 +24,7 @@ public class AddToPandeBuddiesResource {
     }
 
 
-    @PutMapping(path = "/panikbutton")
+    @GetMapping(path = "/panikbutton")
     public ResponseEntity pressPanicButton(@RequestHeader("pandeName") String pandeName) {
         this.addedToBuddiesController.panikButtonPressedOn(pandeName);
 
