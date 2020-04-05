@@ -101,15 +101,22 @@ public class EntryQuestionnaireScore {
                 .map(String::trim)
                 .filter(Strings::isNotEmpty)
                 .filter(a -> a.equalsIgnoreCase("Wash hands with soap or use desinfection gel")
-                        || a.equalsIgnoreCase("Wear a mask"))
+                        || a.equalsIgnoreCase("Avoiding handshakes / kisses / hugs"))
                 .count() * 200;
 
         scoreValue += entryQuestionnaire.getRegularPreventiveMeasures()
                 .stream()
                 .map(String::trim)
                 .filter(Strings::isNotEmpty)
+                .filter(a -> a.equalsIgnoreCase("Wear a mask when going out"))
+                .count() * 100;
+
+        scoreValue += entryQuestionnaire.getRegularPreventiveMeasures()
+                .stream()
+                .map(String::trim)
+                .filter(Strings::isNotEmpty)
                 .filter(a -> a.equalsIgnoreCase("Keep distance from other people"))
-                .count() * 200;
+                .count() * 300;
 
         return scoreValue;
     }
