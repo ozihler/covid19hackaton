@@ -1,5 +1,6 @@
 package com.hackaton.covid19.shared.adapters.data_access;
 
+import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.shared.adapters.data_access.exceptions.PandeBuddyNotFoundException;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddies;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
@@ -23,27 +24,21 @@ public class InMemoryPandeBuddyRepository
     public InMemoryPandeBuddyRepository() {
         this.pandeBuddies = new HashMap<>();
 
-/*
-        List<PandeBuddy> pandeBuddies = new ArrayList<>();
-        pandeBuddies.add(new PandeBuddy(Username.from("Olly"), new PandeBuddies(List.of()), "avatar1.png", new ScoreJson(100, "red", 12,true)));
-        pandeBuddies.add(new PandeBuddy(Username.from("Monique"), new PandeBuddies(List.of()), "avatar2.png", new ScoreJson(200, "red", 11,true)));
-        pandeBuddies.add(new PandeBuddy(Username.from("Sandro"), new PandeBuddies(List.of()), "avatar3.png", new ScoreJson(300, "yellow", 6,false)));
-        pandeBuddies.add(new PandeBuddy(Username.from("Simona"), new PandeBuddies(List.of()), "avatar4.png", new ScoreJson(400, "yellow", 4,false)));
-        pandeBuddies.add(new PandeBuddy(Username.from("Fabian"), new PandeBuddies(List.of()), "avatar5.png", new ScoreJson(500, "green", 0,false)));
-        pandeBuddies.add(new PandeBuddy(Username.from("Hannah"), new PandeBuddies(List.of()), "avatar6.png", new ScoreJson(600, "green", 0,false)));
+        this.pandeBuddies.put(Username.from("Gerry"), new PandeBuddy(Username.from("Gerry"), new PandeBuddies(List.of()), "avatar1.png", new ScoreJson(100, "red", 12, true)));
+        this.pandeBuddies.put(Username.from("Herbi"), new PandeBuddy(Username.from("Herbi"), new PandeBuddies(List.of()), "avatar2.png", new ScoreJson(200, "red", 11, true)));
+        this.pandeBuddies.put(Username.from("Manana"), new PandeBuddy(Username.from("Manana"), new PandeBuddies(List.of()), "avatar3.png", new ScoreJson(300, "yellow", 6, false)));
+        this.pandeBuddies.put(Username.from("Franzkarl"), new PandeBuddy(Username.from("Franzkarl"), new PandeBuddies(List.of()), "avatar4.png", new ScoreJson(400, "yellow", 4, false)));
+        this.pandeBuddies.put(Username.from("Hermann"), new PandeBuddy(Username.from("Hermann"), new PandeBuddies(List.of()), "avatar5.png", new ScoreJson(500, "green", 0, false)));
+        this.pandeBuddies.put(Username.from("Giorgi"), new PandeBuddy(Username.from("Giorgi"), new PandeBuddies(List.of()), "avatar3.png", new ScoreJson(600, "green", 0, false)));
+        this.pandeBuddies.put(Username.from("Ritz"), new PandeBuddy(Username.from("Ritz"), new PandeBuddies(List.of()), "avatar6.png", new ScoreJson(600, "green", 0, false)));
 
-        PandeBuddy alina = new PandeBuddy(Username.from("Alina"), new PandeBuddies(pandeBuddies), "avatar7.png", new ScoreJson(500, "yellow", 7,false));
-
-        List<PandeBuddy> buddiesOfMonique = new ArrayList<>();
-        PandeBuddy monique = new PandeBuddy(Username.from("Monique"), new PandeBuddies(buddiesOfMonique), "avatar2.png", new ScoreJson(200, "red", 11,true));
-        PandeBuddy olly = new PandeBuddy(Username.from("Olly"), new PandeBuddies(List.of(monique)), "avatar1.png", new ScoreJson(100, "red", 12,true));
-        buddiesOfMonique.add(olly);
-
-        this.pandeBuddies.put(alina.getUsername(), alina);
-        this.pandeBuddies.put(olly.getUsername(), olly);
-        this.pandeBuddies.put(monique.getUsername(), monique);
-
- */
+        this.pandeBuddies.put(Username.from("Franzl"), new PandeBuddy(Username.from("Ritz"), new PandeBuddies(List.of()), "avatar1.png", new ScoreJson(100, "red", 12, true)));
+        this.pandeBuddies.put(Username.from("Knochi"), new PandeBuddy(Username.from("Knochi"), new PandeBuddies(List.of()), "avatar2.png", new ScoreJson(200, "red", 11, true)));
+        this.pandeBuddies.put(Username.from("Margarena"), new PandeBuddy(Username.from("Margarena"), new PandeBuddies(List.of()), "avatar3.png", new ScoreJson(300, "yellow", 6, false)));
+        this.pandeBuddies.put(Username.from("Hansipal"), new PandeBuddy(Username.from("Hansipal"), new PandeBuddies(List.of()), "avatar4.png", new ScoreJson(400, "yellow", 4, false)));
+        this.pandeBuddies.put(Username.from("Mikmak"), new PandeBuddy(Username.from("Mikmak"), new PandeBuddies(List.of()), "avatar5.png", new ScoreJson(500, "green", 0, false)));
+        this.pandeBuddies.put(Username.from("Letiko"), new PandeBuddy(Username.from("Letiko"), new PandeBuddies(List.of()), "avatar3.png", new ScoreJson(600, "green", 0, false)));
+        this.pandeBuddies.put(Username.from("Breuler"), new PandeBuddy(Username.from("Breuler"), new PandeBuddies(List.of()), "avatar6.png", new ScoreJson(600, "green", 0, false)));
     }
 
     @Override
