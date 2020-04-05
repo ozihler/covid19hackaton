@@ -1,7 +1,6 @@
 package com.hackaton.covid19.dailyquestionnaire;
 
 import com.hackaton.covid19.entryquestionnaire.CalculatedScore;
-import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaireScore;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.shared.domain.entities.PandeBuddy;
 

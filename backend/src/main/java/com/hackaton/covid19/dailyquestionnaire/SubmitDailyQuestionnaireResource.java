@@ -1,21 +1,25 @@
 package com.hackaton.covid19.dailyquestionnaire;
 
+import com.hackaton.covid19.entryquestionnaire.EntryQuestionnaireService;
 import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 public class SubmitDailyQuestionnaireResource {
 
-    private DailyQuestionnaireService dairyQuestionnaireService;
+    private DailyQuestionnaireService dailyQuestionnaireService;
+
+    @Autowired
+    public SubmitDailyQuestionnaireResource(DailyQuestionnaireService dailyQuestionnaireService) {
+        this.dailyQuestionnaireService = dailyQuestionnaireService;
+    }
 
     @PostMapping("dailyQuestionnaire")
     public ResponseEntity<ScoreJson> submitDailyQuestionnaire(@RequestHeader("pandeName") String pandeName, @RequestBody DailyQuestionnaire dailyQuestionnaire) {
-        ScoreJson score = this.dairyQuestionnaireService.storeQuestionnaire(pandeName,dailyQuestionnaire);
+        ScoreJson score = this.dailyQuestionnaireService.storeQuestionnaire(pandeName,dailyQuestionnaire);
         return ResponseEntity.ok(score);
     }
 }

@@ -11,6 +11,9 @@ public class EntryQuestionnaireScore {
     public static final int HIGH_RISK_AGE = 65;
     public static final int MAX_DAYS_LEFT_TO_MEET = 14;
     public static final String DANGER_COLOR = "red";
+    public static final String CAUTION_COLOR = "yellow";
+    public static final String SAFE_COLOR = "green";
+    public static int THRESHOLD_SCORE = 1000;
 
     private EntryQuestionnaire entryQuestionnaire;
 
@@ -40,10 +43,10 @@ public class EntryQuestionnaireScore {
             int value = calculateScore();
             scoreJson.setValue(value);
 
-            if (value < CalculatedScore.THRESHOLD_SCORE) {
-                scoreJson.setColor("yellow");
+            if (value < THRESHOLD_SCORE) {
+                scoreJson.setColor(CAUTION_COLOR);
             } else {
-                scoreJson.setColor("green");
+                scoreJson.setColor(SAFE_COLOR);
             }
 
             return scoreJson;
@@ -53,7 +56,10 @@ public class EntryQuestionnaireScore {
     private int daysLeftToMeet() {
         LocalDate now = LocalDate.now();
         LocalDate then = entryQuestionnaire.getDate();
-        int daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
+        int daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET;
+        if(then != null){
+            daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
+        }
         return Math.max(daysLeftToMeet, 1);
     }
 

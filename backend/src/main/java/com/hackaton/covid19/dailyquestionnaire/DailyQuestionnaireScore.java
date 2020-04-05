@@ -9,7 +9,9 @@ public class DailyQuestionnaireScore {
 
     public static final int MAX_DAYS_LEFT_TO_MEET = 14;
     public static final String DANGER_COLOR = "red";
-
+    public static final String CAUTION_COLOR = "yellow";
+    public static final String SAFE_COLOR = "green";
+    public static int THRESHOLD_SCORE = 1000;
 
     private DailyQuestionnaire dailyQuestionnaire;
 
@@ -18,22 +20,29 @@ public class DailyQuestionnaireScore {
     }
 
     ScoreJson score() {
-        ScoreJson scoreJson = new ScoreJson(0, "COLOR", 1, false);
+        ScoreJson scoreJson = new ScoreJson(0, SAFE_COLOR, 1, false);
         calculateMeetInXDays(scoreJson);
-        if(scoreJson.isNoMeet()) {
-            scoreJson.setValue(calculateScore());
+        if(!scoreJson.isNoMeet()) {
+            int value = calculateScore();
+            scoreJson.setValue(value);
+            if (value < THRESHOLD_SCORE) {
+                scoreJson.setColor(CAUTION_COLOR);
+            }
         }
         return scoreJson;
     }
 
     private void calculateMeetInXDays(ScoreJson scoreJson) {
         if (dailyQuestionnaire.isSymptoms()
-                || "Travel abroad".equals(dailyQuestionnaire.getTransportation())
-                || "Infected people".equals(dailyQuestionnaire.getMetInfectedPeople())
-                || "Take care of sick people".equals(dailyQuestionnaire.getMetInfectedPeople())) {
+                || dailyQuestionnaire.getTransportation().contains("Travel abroad")
+                || dailyQuestionnaire.getMetInfectedPeople().contains("Infected people")
+                || dailyQuestionnaire.getMetInfectedPeople().contains("Take care of sick people")) {
             LocalDate now = LocalDate.now();
             LocalDate then = dailyQuestionnaire.getDate();
-            int daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
+            int daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET;
+            if(then != null){
+               daysLeftToMeet = MAX_DAYS_LEFT_TO_MEET - Period.between(now, then).getDays();
+            }
             if(daysLeftToMeet > 1){
                 scoreJson.setDaysLeftToMeet(daysLeftToMeet);
                 scoreJson.setNoMeet(true);
