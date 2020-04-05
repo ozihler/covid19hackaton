@@ -1,6 +1,5 @@
 package com.hackaton.covid19.shared.adapters.data_access;
 
-import com.hackaton.covid19.register.adapters.presentation.viewmodels.ScoreJson;
 import com.hackaton.covid19.shared.adapters.data_access.exceptions.PandeBuddyNotFoundException;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddies;
 import com.hackaton.covid19.shared.application.outbound_ports.FetchPandeBuddy;
@@ -24,7 +23,7 @@ public class InMemoryPandeBuddyRepository
     public InMemoryPandeBuddyRepository() {
         this.pandeBuddies = new HashMap<>();
 
-
+/*
         List<PandeBuddy> pandeBuddies = new ArrayList<>();
         pandeBuddies.add(new PandeBuddy(Username.from("Olly"), new PandeBuddies(List.of()), "avatar1.png", new ScoreJson(100, "red", 12,true)));
         pandeBuddies.add(new PandeBuddy(Username.from("Monique"), new PandeBuddies(List.of()), "avatar2.png", new ScoreJson(200, "red", 11,true)));
@@ -43,6 +42,8 @@ public class InMemoryPandeBuddyRepository
         this.pandeBuddies.put(alina.getUsername(), alina);
         this.pandeBuddies.put(olly.getUsername(), olly);
         this.pandeBuddies.put(monique.getUsername(), monique);
+
+ */
     }
 
     @Override
@@ -76,14 +77,14 @@ public class InMemoryPandeBuddyRepository
     }
 
     @Override
-    public PandeBuddies searchPandeBuddies(Username pandename, Username buddyFragment){
+    public PandeBuddies searchPandeBuddies(Username pandename, Username buddyFragment) {
         Set<Username> usernames = pandeBuddies.keySet();
         List<PandeBuddy> pandeBuddiesOfPandeUser = pandeBuddies.get(pandename).getPandeBuddies().getPandeBuddies();
         List<PandeBuddy> pandeBuddiesProposalsList = new ArrayList<>();
-        for (Username username:usernames) {
-            if(username.value().contains(buddyFragment.value())
-            && !username.value().equalsIgnoreCase(pandename.value())
-            && !pandeBuddiesOfPandeUser.contains(pandeBuddies.get(username))){
+        for (Username username : usernames) {
+            if (username.value().contains(buddyFragment.value())
+                    && !username.value().equalsIgnoreCase(pandename.value())
+                    && !pandeBuddiesOfPandeUser.contains(pandeBuddies.get(username))) {
                 pandeBuddiesProposalsList.add(pandeBuddies.get(username));
             }
         }
@@ -101,7 +102,7 @@ public class InMemoryPandeBuddyRepository
         PandeBuddy pandeBuddy = pandeBuddies.get(username);
         PandeBuddy newAddedPandeBuddy = pandeBuddies.get(newBuddyUsername);
         List<PandeBuddy> pandeBuddies = pandeBuddy.getPandeBuddies().getPandeBuddies();
-        if(!pandeBuddies.contains(newAddedPandeBuddy)){
+        if (!pandeBuddies.contains(newAddedPandeBuddy)) {
             pandeBuddies.add(newAddedPandeBuddy);
         }
         return newAddedPandeBuddy;
